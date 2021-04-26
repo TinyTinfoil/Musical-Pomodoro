@@ -1,0 +1,114 @@
+h1 {
+  margin: auto;
+  width: 50%;
+  margin-bottom: 1em;
+}
+#svg2 {
+  animation: borderblend-second 10s linear infinite;
+}
+
+#svg1,
+#svg2 {
+  position: fixed;
+  transform-origin: center;
+  height: 101%;
+  display: none;
+}
+
+#svg1 {
+  animation: borderblend-first 10s linear infinite;
+}
+
+@keyframes borderblend-first {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: -100%;
+  }
+  50.0001% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes borderblend-second {
+  0% {
+    top: 100%;
+  }
+  50% {
+    top: 0%;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+#bod {
+  margin: auto;
+  width: 50%;
+  padding: 1em;
+}
+
+#tbhold > * {
+  padding: 1em;
+}
+
+body {
+  /*overflow-y: hidden;*/
+  overflow-x: hidden;
+  margin: 0;
+}
+
+#left-ribbon {
+  padding: 0;
+  margin: 0;
+}
+
+#specials {
+  float: left;
+}
+
+#timers {
+  float: right;
+}
+
+nav {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+}
+
+#specials > *,
+#timers > * {
+  background-color: red;
+  border-radius: 25px;
+  padding: 12px;
+}
+
+#specials > *:hover,
+#timers > *:hover {
+  animation: mode-flash 0.3s cubic-bezier(1, 0, 0, 1) infinite alternate;
+}
+
+input:checked ~ * {
+  background-color: blue;
+}
+
+@keyframes mode-flash {
+  from {
+    background-color: red;
+    color: grey;
+  }
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
+img {
+  width: 1em;
+  height: 1em;
+}
