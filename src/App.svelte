@@ -3,7 +3,7 @@
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
   import Youtube from "./Youtube.svelte";
-  import {userList} from "./stores.js";
+  import { userList } from "./stores.js";
   export let version;
   let interval = 1000; // ms
   let expected = Date.now() + interval;
@@ -44,7 +44,9 @@
     if (dt > interval) {
       // something really bad happened. Maybe the browser (tab) was inactive?
       // possibly special handling to avoid futile "catch up" run
-      console.log("Significant time drift ... Correcting ...");
+      console.log(
+        "Significant time drift ... Correcting ... (if you get this message many times, please contact us, because it's likely a bug)"
+      );
       t = new Date();
       hour = t.getHours();
       min = t.getMinutes();
@@ -84,8 +86,19 @@
       hour = 0;
     }
   }
-  let breakMusic, normalMusic;
   let plist = false;
+  function messanger(id, message, callback) {
+    browser.tabs.sendMessage(id, ({}[message] = true)).then((response) => {
+      console.log("Message from the content script:");
+      console.log(response, message);
+      callback();
+    });
+  }
+  let normalMusic,breakMusic;
+  normalMusic.play = () => (messanger(testing,"play")
+  normalMusic.pause = () => (messanger(testing,"pause")
+  breakMusic.play = () => (messanger(testing2,"play")
+  breakMusic.pause = () => (messanger(testing2,"pause")
 </script>
 
 <main>
@@ -94,16 +107,18 @@
   <p>
     {deltaTime}
   </p>
-  <Tasklist {min} {hour} {normalMusic} {breakMusic} />
+  <Tasklist />
   <br />
 
-  <Youtube videoId="g8K21P8CoeI"
-  bind:this={normalMusic} />
-  <Youtube videoId="XI7Cxdj2pAQ"
-  bind:this={breakMusic} />
+  <Youtube videoId="g8K21P8CoeI" bind:this={normalMusic} />
+  <Youtube videoId="XI7Cxdj2pAQ" bind:this={breakMusic} />
   <!-- <Playlist /> -->
-  <button on:click={(function(){plist = !plist})}>Make into Playlist : {plist}</button>
-{#if (plist&&$userList!=[])}
-  <Playlist userListObj={$userList} {min} {hour} {breakMusic} {normalMusic} />
-{/if}
+  <button
+    on:click={function () {
+      plist = !plist;
+    }}>Make into Playlist : {plist}</button
+  >
+  {#if plist && $userList != []}
+    <Playlist userListObj={$userList} {min} {hour} {breakMusic} {normalMusic} />
+  {/if}
 </main>
