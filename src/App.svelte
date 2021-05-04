@@ -3,7 +3,7 @@
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
   import Youtube from "./Youtube.svelte";
-
+  import {userList} from "./stores.js";
   export let version;
   let interval = 1000; // ms
   let expected = Date.now() + interval;
@@ -85,6 +85,7 @@
     }
   }
   let breakMusic, normalMusic;
+  let plist = false;
 </script>
 
 <main>
@@ -101,4 +102,8 @@
   <Youtube videoId="XI7Cxdj2pAQ"
   bind:this={breakMusic} />
   <!-- <Playlist /> -->
+  <button on:click={(function(){plist = !plist})}>Make into Playlist : {plist}</button>
+{#if (plist&&$userList!=[])}
+  <Playlist userListObj={$userList} {min} {hour} {breakMusic} {normalMusic} />
+{/if}
 </main>

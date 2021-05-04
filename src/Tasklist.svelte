@@ -1,28 +1,25 @@
 <script>
-  import Playlist from "./Playlist.svelte";
   import Task from "./Task.svelte";
+  import { userList } from "./stores.js";
   let nextTask;
   let nextTime = 25;
   let nextDone = false;
-  let userList = [];
   function addToUserList() {
     if (nextTime === undefined || nextTime > 90 || nextTime < 0) {
     } else {
-      userList = [
-        ...userList,
+      $userList = [
+        ...$userList,
         { name: nextTask, time: nextTime, done: nextDone },
       ];
       nextTask = "";
       nextTime = 25;
       nextDone = false;
     }
-    console.log(userList);
+    console.log($userList);
   }
-  let plist = false;
-  export let min, hour, breakMusic, normalMusic;
   function remove(id){
-    userList.splice(id,1);
-    userList = userList;
+    $userList.splice(id,1);
+    $userList = $userList;
   } 
 </script>
 
@@ -35,7 +32,7 @@
     <th>Remove?</th>
   </thead>
   <tbody>
-    {#each userList as { name, time, done },id}
+    {#each $userList as { name, time, done },id}
       <Task bind:name bind:time bind:done on:delete={() => (remove(id))}/>
     {/each}
   </tbody>
@@ -51,10 +48,7 @@
     </tr>
   </tfoot>
 </table>
-<button on:click={(function(){plist = !plist})}>Make into Playlist : {plist}</button>
-{#if (plist)}
-  <Playlist userListObj={userList} {min} {hour} {breakMusic} {normalMusic} />
-{/if}
+
 
 <style>
   table {
