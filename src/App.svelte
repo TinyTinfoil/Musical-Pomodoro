@@ -88,17 +88,19 @@
   }
   let plist = false;
   function messanger(id, message, callback) {
+    console.log(id+message+"messanger fired")
     browser.tabs.sendMessage(id, ({}[message] = true)).then((response) => {
       console.log("Message from the content script:");
       console.log(response, message);
       callback();
     });
   }
-  let normalMusic,breakMusic;
-  normalMusic.play = () => (messanger(testing,"play")
-  normalMusic.pause = () => (messanger(testing,"pause")
-  breakMusic.play = () => (messanger(testing2,"play")
-  breakMusic.pause = () => (messanger(testing2,"pause")
+  let normalMusic = {}
+  let breakMusic = {};
+  normalMusic.play = ()  => messanger(0,"play");
+  normalMusic.pause = () => messanger(0,"pause");
+  breakMusic.play = () => messanger(2,"play");
+  breakMusic.pause = () => messanger(2,"pause");
 </script>
 
 <main>
@@ -109,10 +111,6 @@
   </p>
   <Tasklist />
   <br />
-
-  <Youtube videoId="g8K21P8CoeI" bind:this={normalMusic} />
-  <Youtube videoId="XI7Cxdj2pAQ" bind:this={breakMusic} />
-  <!-- <Playlist /> -->
   <button
     on:click={function () {
       plist = !plist;

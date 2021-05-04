@@ -1,5 +1,4 @@
 <script>
-  import Youtube from "./Youtube.svelte";
   export let userListObj, min;
   let windowList = [];
   let index = 0;
@@ -14,18 +13,6 @@
     }
   });
   export let normalMusic, breakMusic;
-  normalMusic.setPlaylist(
-    [
-      "nkPHnBWrdDI",
-      "wPqHEgswMBU",
-      "7YKhiqA9L_U"
-    ]
-  );
-  breakMusic.setPlaylist(
-    [
-      "waMXTrx4SGw",
-    ]
-  );
   normalMusic.pause();
   breakMusic.pause();
   let totalTime;
