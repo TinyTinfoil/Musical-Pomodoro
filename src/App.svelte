@@ -2,8 +2,8 @@
   import Tasklist from "./Tasklist.svelte";
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
-  import Youtube from "./Youtube.svelte";
   import { userList } from "./stores.js";
+import { browser } from "node:process";
   export let version;
   let interval = 1000; // ms
   let expected = Date.now() + interval;
@@ -95,12 +95,20 @@
       callback();
     });
   }
-  let normalMusic = {}
+  function getPlayerID(player){
+    browser.runtime.sendMessage({}["GetID"] = player).then(
+      (response) => {
+        console.log("Got ID:",response,player);
+        return response;
+      }
+    )
+  }
+  let normalMusic = {};
   let breakMusic = {};
-  normalMusic.play = ()  => messanger(0,"play");
-  normalMusic.pause = () => messanger(0,"pause");
-  breakMusic.play = () => messanger(2,"play");
-  breakMusic.pause = () => messanger(2,"pause");
+  normalMusic.play = ()  => messanger(getPlayerID("normalMusic"),"play");
+  normalMusic.pause = () => messanger(getPlayerID("normalMusic"),"pause");
+  breakMusic.play = () => messanger(getPlayerID("breakMusic"),"play");
+  breakMusic.pause = () => messanger(getPlayerID("breakMusic"),"pause");
 </script>
 
 <main>
