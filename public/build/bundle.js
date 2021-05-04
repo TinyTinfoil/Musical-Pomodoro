@@ -1,2 +1,2818 @@
-var app=function(){"use strict";function t(){}function e(t){return t()}function n(){return Object.create(null)}function i(t){t.forEach(e)}function o(t){return"function"==typeof t}function r(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function c(t,e){t.appendChild(e)}function s(t,e,n){t.insertBefore(e,n||null)}function u(t){t.parentNode.removeChild(t)}function a(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}function l(t){return document.createElement(t)}function d(t){return document.createTextNode(t)}function f(){return d(" ")}function m(){return d("")}function h(t,e,n,i){return t.addEventListener(e,n,i),()=>t.removeEventListener(e,n,i)}function p(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}function g(t){return""===t?null:+t}function $(t,e){e=""+e,t.wholeText!==e&&(t.data=e)}function v(t,e){t.value=null==e?"":e}function b(t,e,n){t.classList[n?"add":"remove"](e)}let y;function k(t){y=t}function M(){const t=function(){if(!y)throw new Error("Function called outside component initialization");return y}();return(e,n)=>{const i=t.$$.callbacks[e];if(i){const o=function(t,e){const n=document.createEvent("CustomEvent");return n.initCustomEvent(t,!1,!1,e),n}(e,n);i.slice().forEach((e=>{e.call(t,o)}))}}}const w=[],x=[],I=[],Y=[],E=Promise.resolve();let P=!1;function A(t){I.push(t)}function L(t){Y.push(t)}let _=!1;const H=new Set;function T(){if(!_){_=!0;do{for(let t=0;t<w.length;t+=1){const e=w[t];k(e),C(e.$$)}for(k(null),w.length=0;x.length;)x.pop()();for(let t=0;t<I.length;t+=1){const e=I[t];H.has(e)||(H.add(e),e())}I.length=0}while(w.length);for(;Y.length;)Y.pop()();P=!1,_=!1,H.clear()}}function C(t){if(null!==t.fragment){t.update(),i(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(A)}}const j=new Set;let S;function z(){S={r:0,c:[],p:S}}function G(){S.r||i(S.c),S=S.p}function N(t,e){t&&t.i&&(j.delete(t),t.i(e))}function Q(t,e,n,i){if(t&&t.o){if(j.has(t))return;j.add(t),S.c.push((()=>{j.delete(t),i&&(n&&t.d(1),i())})),t.o(e)}}function K(t,e,n){const i=t.$$.props[e];void 0!==i&&(t.$$.bound[i]=n,n(t.$$.ctx[i]))}function O(t){t&&t.c()}function Z(t,n,r,c){const{fragment:s,on_mount:u,on_destroy:a,after_update:l}=t.$$;s&&s.m(n,r),c||A((()=>{const n=u.map(e).filter(o);a?a.push(...n):i(n),t.$$.on_mount=[]})),l.forEach(A)}function D(t,e){const n=t.$$;null!==n.fragment&&(i(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function q(t,e){-1===t.$$.dirty[0]&&(w.push(t),P||(P=!0,E.then(T)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function J(e,o,r,c,s,a,l=[-1]){const d=y;k(e);const f=e.$$={fragment:null,ctx:null,props:a,update:t,not_equal:s,bound:n(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:o.context||[]),callbacks:n(),dirty:l,skip_bound:!1};let m=!1;if(f.ctx=r?r(e,o.props||{},((t,n,...i)=>{const o=i.length?i[0]:n;return f.ctx&&s(f.ctx[t],f.ctx[t]=o)&&(!f.skip_bound&&f.bound[t]&&f.bound[t](o),m&&q(e,t)),n})):[],f.update(),m=!0,i(f.before_update),f.fragment=!!c&&c(f.ctx),o.target){if(o.hydrate){const t=function(t){return Array.from(t.childNodes)}(o.target);f.fragment&&f.fragment.l(t),t.forEach(u)}else f.fragment&&f.fragment.c();o.intro&&N(e.$$.fragment),Z(e,o.target,o.anchor,o.customElement),T()}k(d)}class V{$destroy(){D(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}function X(e){let n;return{c(){n=l("div"),p(n,"id",e[0])},m(t,e){s(t,n,e)},p:t,i:t,o:t,d(t){t&&u(n)}}}var B=document.createElement("script");B.src="https://www.youtube.com/iframe_api";var F=document.getElementsByTagName("script")[0];function U(t,e,n){let i,{videoId:o}=e,r="player_"+parseInt(109999*Math.random());const c=M();function s({data:t}){c("PlayerStateChange",t),console.log(t);let e="";-1==t&&(e="(unstarted)"),0==t&&(e="(ended)"),1==t&&(e="(playing)"),2==t&&(e="(paused)"),3==t&&(e="(buffering)"),5==t&&(e="(video cued)."),c("PlayerStateChangeString",e)}function u(){c("Ready"),setInterval((()=>{c("currentPlayTime",i.getCurrentTime())}),1e3)}return window.addEventListener("iframeApiReady",(function(t){console.log("yo",r),i=new YT.Player(r,{height:"390",width:"640",videoId:o,events:{onReady:u,onStateChange:s}})})),t.$$set=t=>{"videoId"in t&&n(1,o=t.videoId)},[r,o,function(){i.playVideo()},function(){i.pauseVideo()},function(t,e,n){i.loadPlaylist(t,e,n)}]}F.parentNode.insertBefore(B,F),window.onYouTubeIframeAPIReady=()=>window.dispatchEvent(new Event("iframeApiReady"));class R extends V{constructor(t){super(),J(this,t,U,X,r,{videoId:1,play:2,pause:3,setPlaylist:4})}get play(){return this.$$.ctx[2]}get pause(){return this.$$.ctx[3]}get setPlaylist(){return this.$$.ctx[4]}}function W(t,e,n){const i=t.slice();return i[8]=e[n].name,i[9]=e[n].time,i[10]=e[n].done,i[11]=e,i[12]=n,i}function tt(t){let e,n,i;function o(){t[7].call(e,t[11],t[12])}return{c(){e=l("input"),p(e,"type","checkbox"),e.disabled=!0},m(r,c){s(r,e,c),e.checked=t[10],n||(i=h(e,"change",o),n=!0)},p(n,i){t=n,1&i&&(e.checked=t[10])},d(t){t&&u(e),n=!1,i()}}}function et(t){let e,n,i,o,r,a,h,p,g,v,b=t[8]+"",y=t[9]+"",k=void 0!==t[10]&&tt(t);return{c(){e=l("br"),n=f(),i=l("span"),o=d(b),r=f(),a=l("span"),h=d(y),p=d(" min"),g=f(),k&&k.c(),v=m()},m(t,u){s(t,e,u),s(t,n,u),s(t,i,u),c(i,o),s(t,r,u),s(t,a,u),c(a,h),c(a,p),s(t,g,u),k&&k.m(t,u),s(t,v,u)},p(t,e){1&e&&b!==(b=t[8]+"")&&$(o,b),1&e&&y!==(y=t[9]+"")&&$(h,y),void 0!==t[10]?k?k.p(t,e):(k=tt(t),k.c(),k.m(v.parentNode,v)):k&&(k.d(1),k=null)},d(t){t&&u(e),t&&u(n),t&&u(i),t&&u(r),t&&u(a),t&&u(g),k&&k.d(t),t&&u(v)}}}function nt(e){let n,i=e[0],o=[];for(let t=0;t<i.length;t+=1)o[t]=et(W(e,i,t));return{c(){for(let t=0;t<o.length;t+=1)o[t].c();n=m()},m(t,e){for(let n=0;n<o.length;n+=1)o[n].m(t,e);s(t,n,e)},p(t,[e]){if(1&e){let r;for(i=t[0],r=0;r<i.length;r+=1){const c=W(t,i,r);o[r]?o[r].p(c,e):(o[r]=et(c),o[r].c(),o[r].m(n.parentNode,n))}for(;r<o.length;r+=1)o[r].d(1);o.length=i.length}},i:t,o:t,d(t){a(o,t),t&&u(n)}}}function it(t,e,n){let{userListObj:i}=e,{min:o}=e,r=[],c=0;i.forEach((t=>{!1===t.done&&(r.push(t),r.push({name:"Break",time:5,done:void 0}))}));let{normalMusic:s}=e,{breakMusic:u}=e,{state:a}=e;return s.setPlaylist(["nkPHnBWrdDI","wPqHEgswMBU","7YKhiqA9L_U","vJjc5Wt6rJ0","UCaexiaNWHA","zxsit6vn7Co","FdUed2x5yfo","h9exxibPjF4","IKNUbNzAYGs","0G3RYk2YbaY","SaB2Xh3KNp0","q7mVzgBibaU","tFemvMsbipw","1_lpdtkovyw","-6GmUKrlCM0","5erHIwYAsFc","zh-vLDwgKY4","cGs-vYIdrUc","4Kga0hz8KYk","LcmjFC4-qPI","TlZCP-rcQaA","YX05LWM6zOw","FQs9cV0jycg","k-3y2LVF_SE","52uNxK7qdxc","ha0HbaJPl64","2Z3sTwsC4Q4","M6ukpNepHCY","cywf8AbDi_4","oJ6mV8Mz-js","hiZVOTB7f8A","zG_tQZMUK00","Dp9nGccaPNE","mn_Sa0ZAXeI","fCiHSZzuwdc","aLVr0VfeLmk","KY-iiHml9Lo","1ZQvpIVn3ZY","qeL--5yCdDA","-1EPegIzD2M","J_mFvJ6y_3I","e0mTMGYzWms","o0UlGDsH2R4","mLXtuvYyk-A","4W28wWWxKuQ","Q2NMceQvd64","yuySSmW5cfo","OrxEVT0wHMc","zqP2tIxaY90","n9Y2giJ6kDM","LsqCcu10YO8","tYjOp6v3KhE","hkuQVT6Irsk","R9DAvY45Gzs","nbbsw5lLsoo","vvnzu0Nu6tI","iG9-MwFYC-o","DjiEoY9kfB4","PEoJTEzcmiI","ypynP-vhsZI","PXxHI9dQGYE","ZwP8XHLvBI4","r7JH6EieP8w","K88XMWvnOqg","0bigS535rl8","5QxnOER5Hdc","-jU5p8Y-9qY","k51ZlNpBZmM","_vzBAHwIJJs","5EYajAeYEgQ","e1CMaS9pokM","FSLNuTGQHs4","4GnAZvyyC4c","kQknzKl9ym8","JjHPGJ3wr5E","IZuKt2TPVSo","1Zrq8FiKS6A","YGy0mGwZtok","U9_3ucD66hI","tkDlc-xxNs8","HM2JpZg-Qx0","2VPhdMORsAQ","K87qZZkG2fw","Yvr15O0TVtc","0hvY-CXJVlY"].reverse()),u.setPlaylist(["gLrj8atz67k","cf3PtLGjU5I","qcGy-8KbE8E","RrXp7jKybgg","H2oHKSZ12qw","GTeQ-4_XW0w","cS1qN9SZtd8","YfCA4qAitNU","vVYwYg5XNd8","bvd4XdQsMjQ","Xhy3G7-2fcY","4sdBPRliIkM","LXq0O0b5wAY","r3C-FrmHn44","TpLx3iDxPv8","kMnC7kTUd3E","TkySI0bQm3I","Ab8uXlfxlfk","Uj8MsbgpjaQ","Sc_QWB2zwi8","d6tV0cr9zYI","HuINhsEizk8","2wPL9PoLqFY","mFXOJ1mkKtI","b6ci3u2mJVw","qTSGnjoQA2A","euADZxFYfXw","RgbP4WO90Zg","NpJD2MecgJw","siy0pWdUrOs","KIDYGGu2Mak","waMXTrx4SGw"].reverse()),s.play(),u.pause(),t.$$set=t=>{"userListObj"in t&&n(1,i=t.userListObj),"min"in t&&n(2,o=t.min),"normalMusic"in t&&n(3,s=t.normalMusic),"breakMusic"in t&&n(4,u=t.breakMusic),"state"in t&&n(5,a=t.state)},t.$$.update=()=>{93&t.$$.dirty&&(r[c].time>0?n(0,r[c].time--,r):r.length>c&&(n(0,r[c].done=!0,r),n(6,c++,c),void 0===r[c].done?(s.pause(),u.play()):(s.play(),u.pause())),n(0,r),n(2,o),n(6,c),n(3,s),n(4,u))},[r,i,o,s,u,a,c,function(t,e){t[e].done=this.checked,n(0,r),n(2,o),n(6,c),n(3,s),n(4,u)}]}class ot extends V{constructor(t){super(),J(this,t,it,nt,r,{userListObj:1,min:2,normalMusic:3,breakMusic:4,state:5})}}function rt(e){let n,o,r,a,m,$,y,k,M,w,x,I,Y,E,P,A,L,_,H,T;return{c(){n=l("tr"),o=l("td"),r=l("input"),a=f(),m=l("td"),$=l("input"),y=d(" min"),k=f(),M=l("td"),w=l("input"),x=f(),I=l("td"),Y=l("button"),Y.innerHTML='<img src="images/edit.svg" alt="Edit Item" class="svelte-lynhnu"/>',E=f(),P=l("td"),A=l("button"),L=l("img"),p(r,"type","text"),r.disabled=e[3],p($,"type","number"),p($,"min","0"),p($,"max","90"),$.disabled=e[3],p(w,"type","checkbox"),w.disabled=e[3],p(Y,"class","svelte-lynhnu"),b(Y,"active",e[4]),L.src!==(_="images/trash-alt.svg")&&p(L,"src","images/trash-alt.svg"),p(L,"alt","Remove Item"),p(L,"class","svelte-lynhnu"),p(A,"class","svelte-lynhnu")},m(t,i){s(t,n,i),c(n,o),c(o,r),v(r,e[0]),c(n,a),c(n,m),c(m,$),v($,e[1]),c(m,y),c(n,k),c(n,M),c(M,w),w.checked=e[2],c(n,x),c(n,I),c(I,Y),c(n,E),c(n,P),c(P,A),c(A,L),H||(T=[h(r,"input",e[7]),h($,"input",e[8]),h(w,"change",e[9]),h(Y,"click",e[5]),h(L,"click",e[6])],H=!0)},p(t,[e]){8&e&&(r.disabled=t[3]),1&e&&r.value!==t[0]&&v(r,t[0]),8&e&&($.disabled=t[3]),2&e&&g($.value)!==t[1]&&v($,t[1]),8&e&&(w.disabled=t[3]),4&e&&(w.checked=t[2]),16&e&&b(Y,"active",t[4])},i:t,o:t,d(t){t&&u(n),H=!1,i(T)}}}function ct(t,e,n){let{name:i}=e,{time:o}=e,{done:r}=e,c=!0,s=!1,u=o;const a=M();return t.$$set=t=>{"name"in t&&n(0,i=t.name),"time"in t&&n(1,o=t.time),"done"in t&&n(2,r=t.done)},[i,o,r,c,s,function(){s&&(o>90||o<0||!o)?n(1,o=u):u=o,n(3,c=!c),n(4,s=!s)},function(){a("delete")},function(){i=this.value,n(0,i)},function(){o=g(this.value),n(1,o)},function(){r=this.checked,n(2,r)}]}class st extends V{constructor(t){super(),J(this,t,ct,rt,r,{name:0,time:1,done:2})}}function ut(t,e,n){const i=t.slice();return i[20]=e[n].name,i[21]=e[n].time,i[22]=e[n].done,i[23]=e,i[24]=n,i}function at(t){let e,n,i,o,r;function c(e){t[12](e,t[20],t[23],t[24])}function s(e){t[13](e,t[21],t[23],t[24])}function u(e){t[14](e,t[22],t[23],t[24])}let a={};return void 0!==t[20]&&(a.name=t[20]),void 0!==t[21]&&(a.time=t[21]),void 0!==t[22]&&(a.done=t[22]),e=new st({props:a}),x.push((()=>K(e,"name",c))),x.push((()=>K(e,"time",s))),x.push((()=>K(e,"done",u))),e.$on("delete",(function(){return t[15](t[24])})),{c(){O(e.$$.fragment)},m(t,n){Z(e,t,n),r=!0},p(r,c){t=r;const s={};!n&&64&c&&(n=!0,s.name=t[20],L((()=>n=!1))),!i&&64&c&&(i=!0,s.time=t[21],L((()=>i=!1))),!o&&64&c&&(o=!0,s.done=t[22],L((()=>o=!1))),e.$set(s)},i(t){r||(N(e.$$.fragment,t),r=!0)},o(t){Q(e.$$.fragment,t),r=!1},d(t){D(e,t)}}}function lt(t){let e,n,i,o,r,a,m,p;return r=new ot({props:{userListObj:t[6],min:t[0],breakMusic:t[1],normalMusic:t[2],state:t[8]}}),{c(){e=l("button"),n=d("Play:"),i=d(t[8]),o=f(),O(r.$$.fragment)},m(u,l){s(u,e,l),c(e,n),c(e,i),s(u,o,l),Z(r,u,l),a=!0,m||(p=h(e,"click",t[10]),m=!0)},p(t,e){(!a||256&e)&&$(i,t[8]);const n={};64&e&&(n.userListObj=t[6]),1&e&&(n.min=t[0]),2&e&&(n.breakMusic=t[1]),4&e&&(n.normalMusic=t[2]),256&e&&(n.state=t[8]),r.$set(n)},i(t){a||(N(r.$$.fragment,t),a=!0)},o(t){Q(r.$$.fragment,t),a=!1},d(t){t&&u(e),t&&u(o),D(r,t),m=!1,p()}}}function dt(t){let e,n,o,r,b,y,k,M,w,x,I,Y,E,P,A,L,_,H,T,C,j,S,K,O,Z,D,q,J,V,X,B=t[6],F=[];for(let e=0;e<B.length;e+=1)F[e]=at(ut(t,B,e));const U=t=>Q(F[t],1,1,(()=>{F[t]=null}));let R=t[7]&&lt(t);return{c(){e=l("table"),n=l("thead"),n.innerHTML="<th>Task:</th> \n    <th>Time:</th> \n    <th>Done?</th> \n    <th>Edit?</th> \n    <th>Remove?</th>",o=f(),r=l("tbody");for(let t=0;t<F.length;t+=1)F[t].c();b=f(),y=l("tfoot"),k=l("h4"),k.textContent="Add Task",M=f(),w=l("tr"),x=l("td"),I=l("input"),Y=f(),E=l("td"),P=l("input"),A=d(" min"),L=f(),_=l("td"),H=l("input"),T=f(),C=l("td"),j=l("button"),j.textContent="+",S=f(),K=l("button"),O=d("Make into Playlist : "),Z=d(t[7]),D=f(),R&&R.c(),q=m(),p(I,"type","text"),p(P,"type","number"),p(P,"min","0"),p(P,"max","90"),p(H,"type","checkbox"),p(e,"class","svelte-c3e669")},m(i,u){s(i,e,u),c(e,n),c(e,o),c(e,r);for(let t=0;t<F.length;t+=1)F[t].m(r,null);c(e,b),c(e,y),c(y,k),c(y,M),c(y,w),c(w,x),c(x,I),v(I,t[3]),c(w,Y),c(w,E),c(E,P),v(P,t[4]),c(E,A),c(w,L),c(w,_),c(_,H),H.checked=t[5],c(w,T),c(w,C),c(C,j),s(i,S,u),s(i,K,u),c(K,O),c(K,Z),s(i,D,u),R&&R.m(i,u),s(i,q,u),J=!0,V||(X=[h(I,"input",t[16]),h(P,"input",t[17]),h(H,"change",t[18]),h(j,"click",t[9]),h(K,"click",t[19])],V=!0)},p(t,[e]){if(2112&e){let n;for(B=t[6],n=0;n<B.length;n+=1){const i=ut(t,B,n);F[n]?(F[n].p(i,e),N(F[n],1)):(F[n]=at(i),F[n].c(),N(F[n],1),F[n].m(r,null))}for(z(),n=B.length;n<F.length;n+=1)U(n);G()}8&e&&I.value!==t[3]&&v(I,t[3]),16&e&&g(P.value)!==t[4]&&v(P,t[4]),32&e&&(H.checked=t[5]),(!J||128&e)&&$(Z,t[7]),t[7]?R?(R.p(t,e),128&e&&N(R,1)):(R=lt(t),R.c(),N(R,1),R.m(q.parentNode,q)):R&&(z(),Q(R,1,1,(()=>{R=null})),G())},i(t){if(!J){for(let t=0;t<B.length;t+=1)N(F[t]);N(R),J=!0}},o(t){F=F.filter(Boolean);for(let t=0;t<F.length;t+=1)Q(F[t]);Q(R),J=!1},d(t){t&&u(e),a(F,t),t&&u(S),t&&u(K),t&&u(D),R&&R.d(t),t&&u(q),V=!1,i(X)}}}function ft(t,e,n){let i,o=25,r=!1,c=[];let s=!1,{min:u}=e,{breakMusic:a}=e,{normalMusic:l}=e,d=!1;function f(t){c.splice(t,1),n(6,c)}return t.$$set=t=>{"min"in t&&n(0,u=t.min),"breakMusic"in t&&n(1,a=t.breakMusic),"normalMusic"in t&&n(2,l=t.normalMusic)},[u,a,l,i,o,r,c,s,d,function(){void 0===o||o>90||o<0||(n(6,c=[...c,{name:i,time:o,done:r}]),n(3,i=""),n(4,o=25),n(5,r=!1)),console.log(c)},function(){n(8,d=!d)},f,function(t,e,i,o){i[o].name=t,n(6,c)},function(t,e,i,o){i[o].time=t,n(6,c)},function(t,e,i,o){i[o].done=t,n(6,c)},t=>f(t),function(){i=this.value,n(3,i)},function(){o=g(this.value),n(4,o)},function(){r=this.checked,n(5,r)},()=>n(7,s=!s)]}class mt extends V{constructor(t){super(),J(this,t,ft,dt,r,{min:0,breakMusic:1,normalMusic:2})}}function ht(e){let n,i,o,r,a,m,h,g,v,b,y,k,M,w=(e[0]%12||12)+"",x=(e[1]<10?"0"+e[1]:e[1])+"",I=e[0]>12?"PM":"AM";return{c(){n=l("h1"),i=d(w),o=d(":"),r=d(x),a=f(),m=d(I),h=f(),g=l("br"),v=f(),b=l("sub"),y=d(e[2]),k=f(),M=l("h2"),M.textContent="TFH",p(b,"class","svelte-1sru9z3"),p(n,"class","svelte-1sru9z3"),p(M,"class","svelte-1sru9z3")},m(t,e){s(t,n,e),c(n,i),c(n,o),c(n,r),c(n,a),c(n,m),c(n,h),c(n,g),c(n,v),c(n,b),c(b,y),s(t,k,e),s(t,M,e)},p(t,[e]){1&e&&w!==(w=(t[0]%12||12)+"")&&$(i,w),2&e&&x!==(x=(t[1]<10?"0"+t[1]:t[1])+"")&&$(r,x),1&e&&I!==(I=t[0]>12?"PM":"AM")&&$(m,I),4&e&&$(y,t[2])},i:t,o:t,d(t){t&&u(n),t&&u(k),t&&u(M)}}}function pt(t,e,n){let{version:i}=e,{hour:o}=e,{min:r}=e,c="";return t.$$set=t=>{"version"in t&&n(3,i=t.version),"hour"in t&&n(0,o=t.hour),"min"in t&&n(1,r=t.min)},t.$$.update=()=>{9&t.$$.dirty&&n(2,c=23===o?"Hour of the Rat":0===o?"Midnight":1===o?"Hour of the Ox":2===o?"Late Hour":3===o?"Hour of the Tiger":4===o?"Morning Hour":5===o?"Daybreak":i)},[o,r,c,i]}class gt extends V{constructor(t){super(),J(this,t,pt,ht,r,{version:3,hour:0,min:1})}}function $t(t){let e,n,i,o,r,a,m,h,p,g,v,b,y,k,M,w,x;n=new gt({props:{version:t[0],hour:t[2],min:t[3]}}),g=new mt({props:{min:t[3],normalMusic:t[6],breakMusic:t[5]}});k=new R({props:{videoId:"g8K21P8CoeI"}}),t[7](k);return w=new R({props:{videoId:"XI7Cxdj2pAQ"}}),t[8](w),{c(){e=l("main"),O(n.$$.fragment),i=f(),o=l("p"),r=d(t[4]),a=f(),m=l("p"),h=d(t[1]),p=f(),O(g.$$.fragment),v=f(),b=l("br"),y=f(),O(k.$$.fragment),M=f(),O(w.$$.fragment)},m(t,u){s(t,e,u),Z(n,e,null),c(e,i),c(e,o),c(o,r),c(e,a),c(e,m),c(m,h),c(e,p),Z(g,e,null),c(e,v),c(e,b),c(e,y),Z(k,e,null),c(e,M),Z(w,e,null),x=!0},p(t,[e]){const i={};1&e&&(i.version=t[0]),4&e&&(i.hour=t[2]),8&e&&(i.min=t[3]),n.$set(i),(!x||16&e)&&$(r,t[4]),(!x||2&e)&&$(h,t[1]);const o={};8&e&&(o.min=t[3]),64&e&&(o.normalMusic=t[6]),32&e&&(o.breakMusic=t[5]),g.$set(o);k.$set({});w.$set({})},i(t){x||(N(n.$$.fragment,t),N(g.$$.fragment,t),N(k.$$.fragment,t),N(w.$$.fragment,t),x=!0)},o(t){Q(n.$$.fragment,t),Q(g.$$.fragment,t),Q(k.$$.fragment,t),Q(w.$$.fragment,t),x=!1},d(i){i&&u(e),D(n),D(g),t[7](null),D(k),t[8](null),D(w)}}}let vt=1e3;function bt(t,e,n){let i,o,{version:r}=e,c=Date.now()+vt,s=new Date,u=s.getSeconds(),a=s.getHours(),l=s.getMinutes(),d=[],f=0;return setTimeout((function t(){var e=Date.now()-c;e>vt&&(console.log("Significant time drift ... Correcting ..."),n(4,s=new Date),n(2,a=s.getHours()),n(3,l=s.getMinutes()),n(1,u=s.getSeconds()));n(1,u++,u),e<=vt&&(d.push(e+f),f=function(t){var e=t.concat();if(e.sort((function(t,e){return t-e})),0===e.length)return 0;var n=Math.floor(e.length/2);return e.length%2?e[n]:(e[n-1]+e[n])/2}(d),d.length>=10&&d.shift());c+=vt,setTimeout(t,Math.max(0,vt-e-f))}),vt),t.$$set=t=>{"version"in t&&n(0,r=t.version)},t.$$.update=()=>{14&t.$$.dirty&&(60===u&&(n(3,l++,l),n(1,u=0)),l>=60&&(n(2,a++,a),n(3,l=0)),24==a&&n(2,a=0))},[r,u,a,l,s,i,o,function(t){x[t?"unshift":"push"]((()=>{o=t,n(6,o)}))},function(t){x[t?"unshift":"push"]((()=>{i=t,n(5,i)}))}]}return new class extends V{constructor(t){super(),J(this,t,bt,$t,r,{version:0})}}({target:document.body,props:{version:"Beta"}})}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function to_number(value) {
+        return value === '' ? null : +value;
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
+    }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    function createEventDispatcher() {
+        const component = get_current_component();
+        return (type, detail) => {
+            const callbacks = component.$$.callbacks[type];
+            if (callbacks) {
+                // TODO are there situations where events could be dispatched
+                // in a server (non-DOM) environment?
+                const event = custom_event(type, detail);
+                callbacks.slice().forEach(fn => {
+                    fn.call(component, event);
+                });
+            }
+        };
+    }
+    function setContext(key, context) {
+        get_current_component().$$.context.set(key, context);
+    }
+    function getContext(key) {
+        return get_current_component().$$.context.get(key);
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    function add_flush_callback(fn) {
+        flush_callbacks.push(fn);
+    }
+    let flushing = false;
+    const seen_callbacks = new Set();
+    function flush() {
+        if (flushing)
+            return;
+        flushing = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components.length; i += 1) {
+                const component = dirty_components[i];
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        flushing = false;
+        seen_callbacks.clear();
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+
+    function bind(component, name, callback) {
+        const index = component.$$.props[name];
+        if (index !== undefined) {
+            component.$$.bound[index] = callback;
+            callback(component.$$.ctx[index]);
+        }
+    }
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor, customElement) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback(() => {
+                const new_on_destroy = on_mount.map(run).filter(is_function);
+                if (on_destroy) {
+                    on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : options.context || []),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor, options.customElement);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.37.0' }, detail)));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.wholeText === data)
+            return;
+        dispatch_dev('SvelteDOMSetData', { node: text, data });
+        text.data = data;
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    /**
+     * Base class for Svelte components with some minor dev-enhancements. Used when dev=true.
+     */
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    /* src/Youtube.svelte generated by Svelte v3.37.0 */
+
+    const { console: console_1$2 } = globals;
+    const file$5 = "src/Youtube.svelte";
+
+    function create_fragment$5(ctx) {
+    	let div;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			attr_dev(div, "id", /*divId*/ ctx[0]);
+    			add_location(div, file$5, 73, 0, 1950);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$5.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    let iframeApiReady = false;
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    window.onYouTubeIframeAPIReady = () => window.dispatchEvent(new Event("iframeApiReady"));
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Youtube", slots, []);
+    	let { videoId } = $$props;
+    	let player;
+    	let divId = "player_" + parseInt(Math.random() * 109999);
+
+    	function play() {
+    		player.playVideo();
+    	}
+
+    	function pause() {
+    		player.pauseVideo();
+    	}
+
+    	function setPlaylist(playlist, index, startSeconds) {
+    		player.loadPlaylist(playlist, index, startSeconds);
+    	}
+
+    	const dispatch = createEventDispatcher();
+
+    	window.addEventListener("iframeApiReady", function (e) {
+    		console.log("yo", divId);
+
+    		player = new YT.Player(divId,
+    		{
+    				height: "390",
+    				width: "640",
+    				videoId,
+    				events: {
+    					onReady: playerIsReady,
+    					onStateChange: playerStateChange
+    				}
+    			});
+    	});
+
+    	function playerStateChange({ data }) {
+    		dispatch("PlayerStateChange", data);
+    		console.log(data);
+    		let strReturn = "";
+
+    		if (data == -1) {
+    			strReturn = "(unstarted)";
+    		}
+
+    		if (data == 0) {
+    			strReturn = "(ended)";
+    		}
+
+    		if (data == 1) {
+    			strReturn = "(playing)";
+    		}
+
+    		if (data == 2) {
+    			strReturn = "(paused)";
+    		}
+
+    		if (data == 3) {
+    			strReturn = "(buffering)";
+    		}
+
+    		if (data == 5) {
+    			strReturn = "(video cued).";
+    		}
+
+    		dispatch("PlayerStateChangeString", strReturn);
+    	}
+
+    	function playerIsReady() {
+    		dispatch("Ready");
+
+    		setInterval(
+    			() => {
+    				dispatch("currentPlayTime", player.getCurrentTime()); //console.log(player.getCurrentTime())
+    			},
+    			1000
+    		); //console.log(player.getCurrentTime())
+    	}
+
+    	const writable_props = ["videoId"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$2.warn(`<Youtube> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("videoId" in $$props) $$invalidate(1, videoId = $$props.videoId);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		iframeApiReady,
+    		setContext,
+    		onMount,
+    		tag,
+    		firstScriptTag,
+    		createEventDispatcher,
+    		getContext,
+    		videoId,
+    		player,
+    		divId,
+    		play,
+    		pause,
+    		setPlaylist,
+    		dispatch,
+    		playerStateChange,
+    		playerIsReady
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("videoId" in $$props) $$invalidate(1, videoId = $$props.videoId);
+    		if ("player" in $$props) player = $$props.player;
+    		if ("divId" in $$props) $$invalidate(0, divId = $$props.divId);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [divId, videoId, play, pause, setPlaylist];
+    }
+
+    class Youtube extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {
+    			videoId: 1,
+    			play: 2,
+    			pause: 3,
+    			setPlaylist: 4
+    		});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Youtube",
+    			options,
+    			id: create_fragment$5.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*videoId*/ ctx[1] === undefined && !("videoId" in props)) {
+    			console_1$2.warn("<Youtube> was created without expected prop 'videoId'");
+    		}
+    	}
+
+    	get videoId() {
+    		throw new Error("<Youtube>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set videoId(value) {
+    		throw new Error("<Youtube>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get play() {
+    		return this.$$.ctx[2];
+    	}
+
+    	set play(value) {
+    		throw new Error("<Youtube>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get pause() {
+    		return this.$$.ctx[3];
+    	}
+
+    	set pause(value) {
+    		throw new Error("<Youtube>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get setPlaylist() {
+    		return this.$$.ctx[4];
+    	}
+
+    	set setPlaylist(value) {
+    		throw new Error("<Youtube>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/Playlist.svelte generated by Svelte v3.37.0 */
+    const file$4 = "src/Playlist.svelte";
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[15] = list[i].name;
+    	child_ctx[16] = list[i].time;
+    	child_ctx[17] = list[i].done;
+    	child_ctx[18] = list;
+    	child_ctx[19] = i;
+    	return child_ctx;
+    }
+
+    // (88:2) {#if done !== undefined}
+    function create_if_block_1(ctx) {
+    	let input;
+    	let mounted;
+    	let dispose;
+
+    	function input_change_handler() {
+    		/*input_change_handler*/ ctx[10].call(input, /*each_value*/ ctx[18], /*each_index*/ ctx[19]);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			input = element("input");
+    			attr_dev(input, "type", "checkbox");
+    			input.disabled = true;
+    			add_location(input, file$4, 87, 26, 1937);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, input, anchor);
+    			input.checked = /*done*/ ctx[17];
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "change", input_change_handler);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*windowList*/ 1) {
+    				input.checked = /*done*/ ctx[17];
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(input);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(88:2) {#if done !== undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (84:0) {#each windowList as { name, time, done }}
+    function create_each_block$1(ctx) {
+    	let br;
+    	let t0;
+    	let span0;
+    	let t1_value = /*name*/ ctx[15] + "";
+    	let t1;
+    	let t2;
+    	let span1;
+    	let t3_value = /*time*/ ctx[16] + "";
+    	let t3;
+    	let t4;
+    	let t5;
+    	let if_block_anchor;
+    	let if_block = /*done*/ ctx[17] !== undefined && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			br = element("br");
+    			t0 = space();
+    			span0 = element("span");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			span1 = element("span");
+    			t3 = text(t3_value);
+    			t4 = text(" min");
+    			t5 = space();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    			add_location(br, file$4, 84, 2, 1856);
+    			add_location(span0, file$4, 85, 2, 1865);
+    			add_location(span1, file$4, 86, 2, 1887);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, br, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, span0, anchor);
+    			append_dev(span0, t1);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, span1, anchor);
+    			append_dev(span1, t3);
+    			append_dev(span1, t4);
+    			insert_dev(target, t5, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*windowList*/ 1 && t1_value !== (t1_value = /*name*/ ctx[15] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*windowList*/ 1 && t3_value !== (t3_value = /*time*/ ctx[16] + "")) set_data_dev(t3, t3_value);
+
+    			if (/*done*/ ctx[17] !== undefined) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(br);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(span0);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(span1);
+    			if (detaching) detach_dev(t5);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$1.name,
+    		type: "each",
+    		source: "(84:0) {#each windowList as { name, time, done }}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (100:0) {#if (playing)}
+    function create_if_block$1(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			p.textContent = "Now Playing";
+    			add_location(p, file$4, 100, 2, 2123);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(100:0) {#if (playing)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let t0;
+    	let button;
+    	let t2;
+    	let t3;
+    	let p;
+    	let t4;
+    	let t5;
+    	let t6;
+    	let t7_value = (/*estimatedComplete*/ ctx[2]._hour % 12 || 12) + "";
+    	let t7;
+    	let t8;
+
+    	let t9_value = (/*estimatedComplete*/ ctx[2]._min < 10
+    	? "0" + /*estimatedComplete*/ ctx[2]._min
+    	: /*estimatedComplete*/ ctx[2]._min) + "";
+
+    	let t9;
+    	let t10;
+    	let t11_value = (/*estimatedComplete*/ ctx[2]._hour > 12 ? "PM" : "AM") + "";
+    	let t11;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*windowList*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	let if_block = /*playing*/ ctx[3] && create_if_block$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t0 = space();
+    			button = element("button");
+    			button.textContent = "Play this";
+    			t2 = space();
+    			if (if_block) if_block.c();
+    			t3 = space();
+    			p = element("p");
+    			t4 = text("Playlist has ");
+    			t5 = text(/*totalTime*/ ctx[1]);
+    			t6 = text(" minutes remaining. This will finish at aprox. ");
+    			t7 = text(t7_value);
+    			t8 = text(":");
+    			t9 = text(t9_value);
+    			t10 = space();
+    			t11 = text(t11_value);
+    			add_location(button, file$4, 94, 0, 2028);
+    			add_location(p, file$4, 102, 0, 2148);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, button, anchor);
+    			insert_dev(target, t2, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t4);
+    			append_dev(p, t5);
+    			append_dev(p, t6);
+    			append_dev(p, t7);
+    			append_dev(p, t8);
+    			append_dev(p, t9);
+    			append_dev(p, t10);
+    			append_dev(p, t11);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[11], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*windowList, undefined*/ 1) {
+    				each_value = /*windowList*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(t0.parentNode, t0);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (/*playing*/ ctx[3]) {
+    				if (if_block) ; else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					if_block.m(t3.parentNode, t3);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (dirty & /*totalTime*/ 2) set_data_dev(t5, /*totalTime*/ ctx[1]);
+    			if (dirty & /*estimatedComplete*/ 4 && t7_value !== (t7_value = (/*estimatedComplete*/ ctx[2]._hour % 12 || 12) + "")) set_data_dev(t7, t7_value);
+
+    			if (dirty & /*estimatedComplete*/ 4 && t9_value !== (t9_value = (/*estimatedComplete*/ ctx[2]._min < 10
+    			? "0" + /*estimatedComplete*/ ctx[2]._min
+    			: /*estimatedComplete*/ ctx[2]._min) + "")) set_data_dev(t9, t9_value);
+
+    			if (dirty & /*estimatedComplete*/ 4 && t11_value !== (t11_value = (/*estimatedComplete*/ ctx[2]._hour > 12 ? "PM" : "AM") + "")) set_data_dev(t11, t11_value);
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(t2);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(p);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Playlist", slots, []);
+    	let { userListObj } = $$props, { min } = $$props;
+    	let windowList = [];
+    	let index = 0;
+
+    	userListObj.forEach(e => {
+    		if (e.done === false) {
+    			windowList.push(e);
+    			windowList.push({ name: "Break", time: 5, done: undefined });
+    		}
+    	});
+
+    	let { normalMusic } = $$props, { breakMusic } = $$props;
+    	normalMusic.setPlaylist(["nkPHnBWrdDI", "wPqHEgswMBU", "7YKhiqA9L_U"]);
+    	breakMusic.setPlaylist(["waMXTrx4SGw"]);
+    	normalMusic.pause();
+    	breakMusic.pause();
+    	let totalTime;
+    	let estimatedComplete = { _hour: 0, _min: 0 };
+    	let { hour } = $$props;
+    	let playing = false;
+    	let accumulator = 0;
+
+    	function playMusic() {
+    		if (windowList[index].done === undefined) {
+    			normalMusic.pause();
+    			breakMusic.play();
+    		} else {
+    			normalMusic.play();
+    			breakMusic.pause();
+    		}
+    	}
+
+    	function updr() {
+    		if (!playing) return;
+
+    		if (windowList[index].time > 0) {
+    			$$invalidate(0, windowList[index].time--, windowList);
+    		} else if (windowList.length > index) {
+    			$$invalidate(0, windowList[index].done = true, windowList);
+    			index++;
+    			playMusic();
+    		}
+
+    		$$invalidate(0, windowList);
+    	}
+
+    	const writable_props = ["userListObj", "min", "normalMusic", "breakMusic", "hour"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Playlist> was created with unknown prop '${key}'`);
+    	});
+
+    	function input_change_handler(each_value, each_index) {
+    		each_value[each_index].done = this.checked;
+    		$$invalidate(0, windowList);
+    	}
+
+    	const click_handler = () => {
+    		$$invalidate(3, playing = !playing);
+    	};
+
+    	$$self.$$set = $$props => {
+    		if ("userListObj" in $$props) $$invalidate(4, userListObj = $$props.userListObj);
+    		if ("min" in $$props) $$invalidate(5, min = $$props.min);
+    		if ("normalMusic" in $$props) $$invalidate(6, normalMusic = $$props.normalMusic);
+    		if ("breakMusic" in $$props) $$invalidate(7, breakMusic = $$props.breakMusic);
+    		if ("hour" in $$props) $$invalidate(8, hour = $$props.hour);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Youtube,
+    		userListObj,
+    		min,
+    		windowList,
+    		index,
+    		normalMusic,
+    		breakMusic,
+    		totalTime,
+    		estimatedComplete,
+    		hour,
+    		playing,
+    		accumulator,
+    		playMusic,
+    		updr
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("userListObj" in $$props) $$invalidate(4, userListObj = $$props.userListObj);
+    		if ("min" in $$props) $$invalidate(5, min = $$props.min);
+    		if ("windowList" in $$props) $$invalidate(0, windowList = $$props.windowList);
+    		if ("index" in $$props) index = $$props.index;
+    		if ("normalMusic" in $$props) $$invalidate(6, normalMusic = $$props.normalMusic);
+    		if ("breakMusic" in $$props) $$invalidate(7, breakMusic = $$props.breakMusic);
+    		if ("totalTime" in $$props) $$invalidate(1, totalTime = $$props.totalTime);
+    		if ("estimatedComplete" in $$props) $$invalidate(2, estimatedComplete = $$props.estimatedComplete);
+    		if ("hour" in $$props) $$invalidate(8, hour = $$props.hour);
+    		if ("playing" in $$props) $$invalidate(3, playing = $$props.playing);
+    		if ("accumulator" in $$props) $$invalidate(9, accumulator = $$props.accumulator);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*min, windowList, accumulator, hour, estimatedComplete, totalTime*/ 807) {
+    			{
+    				updr();
+    				$$invalidate(9, accumulator = 0);
+
+    				for (let item of windowList) {
+    					$$invalidate(9, accumulator += item.time);
+    				}
+
+    				$$invalidate(1, totalTime = accumulator);
+    				$$invalidate(2, estimatedComplete = { _hour: hour, _min: min });
+
+    				if (estimatedComplete._min + totalTime >= 60) {
+    					$$invalidate(2, estimatedComplete._hour++, estimatedComplete);
+    					if (estimatedComplete._hour == 24) $$invalidate(2, estimatedComplete._hour = 0, estimatedComplete);
+    					$$invalidate(2, estimatedComplete._min = estimatedComplete._min + totalTime % 60, estimatedComplete);
+    				} else $$invalidate(2, estimatedComplete._min += totalTime, estimatedComplete);
+    			}
+    		}
+
+    		if ($$self.$$.dirty & /*playing, normalMusic, breakMusic*/ 200) {
+    			{
+    				if (!playing) {
+    					normalMusic.pause();
+    					breakMusic.pause();
+    				} else {
+    					playMusic();
+    				}
+    			}
+    		}
+    	};
+
+    	return [
+    		windowList,
+    		totalTime,
+    		estimatedComplete,
+    		playing,
+    		userListObj,
+    		min,
+    		normalMusic,
+    		breakMusic,
+    		hour,
+    		accumulator,
+    		input_change_handler,
+    		click_handler
+    	];
+    }
+
+    class Playlist extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, {
+    			userListObj: 4,
+    			min: 5,
+    			normalMusic: 6,
+    			breakMusic: 7,
+    			hour: 8
+    		});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Playlist",
+    			options,
+    			id: create_fragment$4.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*userListObj*/ ctx[4] === undefined && !("userListObj" in props)) {
+    			console.warn("<Playlist> was created without expected prop 'userListObj'");
+    		}
+
+    		if (/*min*/ ctx[5] === undefined && !("min" in props)) {
+    			console.warn("<Playlist> was created without expected prop 'min'");
+    		}
+
+    		if (/*normalMusic*/ ctx[6] === undefined && !("normalMusic" in props)) {
+    			console.warn("<Playlist> was created without expected prop 'normalMusic'");
+    		}
+
+    		if (/*breakMusic*/ ctx[7] === undefined && !("breakMusic" in props)) {
+    			console.warn("<Playlist> was created without expected prop 'breakMusic'");
+    		}
+
+    		if (/*hour*/ ctx[8] === undefined && !("hour" in props)) {
+    			console.warn("<Playlist> was created without expected prop 'hour'");
+    		}
+    	}
+
+    	get userListObj() {
+    		throw new Error("<Playlist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set userListObj(value) {
+    		throw new Error("<Playlist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get min() {
+    		throw new Error("<Playlist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set min(value) {
+    		throw new Error("<Playlist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get normalMusic() {
+    		throw new Error("<Playlist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set normalMusic(value) {
+    		throw new Error("<Playlist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get breakMusic() {
+    		throw new Error("<Playlist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set breakMusic(value) {
+    		throw new Error("<Playlist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get hour() {
+    		throw new Error("<Playlist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set hour(value) {
+    		throw new Error("<Playlist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/Task.svelte generated by Svelte v3.37.0 */
+    const file$3 = "src/Task.svelte";
+
+    function create_fragment$3(ctx) {
+    	let tr;
+    	let td0;
+    	let input0;
+    	let t0;
+    	let td1;
+    	let input1;
+    	let t1;
+    	let t2;
+    	let td2;
+    	let input2;
+    	let t3;
+    	let td3;
+    	let button0;
+    	let img0;
+    	let img0_src_value;
+    	let t4;
+    	let td4;
+    	let button1;
+    	let img1;
+    	let img1_src_value;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			tr = element("tr");
+    			td0 = element("td");
+    			input0 = element("input");
+    			t0 = space();
+    			td1 = element("td");
+    			input1 = element("input");
+    			t1 = text(" min");
+    			t2 = space();
+    			td2 = element("td");
+    			input2 = element("input");
+    			t3 = space();
+    			td3 = element("td");
+    			button0 = element("button");
+    			img0 = element("img");
+    			t4 = space();
+    			td4 = element("td");
+    			button1 = element("button");
+    			img1 = element("img");
+    			attr_dev(input0, "type", "text");
+    			input0.disabled = /*disabled*/ ctx[3];
+    			add_location(input0, file$3, 23, 6, 465);
+    			add_location(td0, file$3, 23, 2, 461);
+    			attr_dev(input1, "type", "number");
+    			attr_dev(input1, "min", "0");
+    			attr_dev(input1, "max", "90");
+    			input1.disabled = /*disabled*/ ctx[3];
+    			add_location(input1, file$3, 25, 5, 532);
+    			add_location(td1, file$3, 24, 2, 523);
+    			attr_dev(input2, "type", "checkbox");
+    			input2.disabled = /*disabled*/ ctx[3];
+    			add_location(input2, file$3, 27, 6, 620);
+    			add_location(td2, file$3, 27, 2, 616);
+    			if (img0.src !== (img0_src_value = "images/edit.svg")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "Edit Item");
+    			attr_dev(img0, "class", "svelte-lynhnu");
+    			add_location(img0, file$3, 30, 7, 739);
+    			attr_dev(button0, "class", "svelte-lynhnu");
+    			toggle_class(button0, "active", /*active*/ ctx[4]);
+    			add_location(button0, file$3, 29, 5, 693);
+    			add_location(td3, file$3, 28, 2, 684);
+    			if (img1.src !== (img1_src_value = "images/trash-alt.svg")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "Remove Item");
+    			attr_dev(img1, "class", "svelte-lynhnu");
+    			add_location(img1, file$3, 33, 14, 821);
+    			attr_dev(button1, "class", "svelte-lynhnu");
+    			add_location(button1, file$3, 33, 6, 813);
+    			add_location(td4, file$3, 33, 2, 809);
+    			add_location(tr, file$3, 22, 0, 454);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, input0);
+    			set_input_value(input0, /*name*/ ctx[0]);
+    			append_dev(tr, t0);
+    			append_dev(tr, td1);
+    			append_dev(td1, input1);
+    			set_input_value(input1, /*time*/ ctx[1]);
+    			append_dev(td1, t1);
+    			append_dev(tr, t2);
+    			append_dev(tr, td2);
+    			append_dev(td2, input2);
+    			input2.checked = /*done*/ ctx[2];
+    			append_dev(tr, t3);
+    			append_dev(tr, td3);
+    			append_dev(td3, button0);
+    			append_dev(button0, img0);
+    			append_dev(tr, t4);
+    			append_dev(tr, td4);
+    			append_dev(td4, button1);
+    			append_dev(button1, img1);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[7]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[8]),
+    					listen_dev(input2, "change", /*input2_change_handler*/ ctx[9]),
+    					listen_dev(button0, "click", /*toggle*/ ctx[5], false, false, false),
+    					listen_dev(img1, "click", /*remove*/ ctx[6], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*disabled*/ 8) {
+    				prop_dev(input0, "disabled", /*disabled*/ ctx[3]);
+    			}
+
+    			if (dirty & /*name*/ 1 && input0.value !== /*name*/ ctx[0]) {
+    				set_input_value(input0, /*name*/ ctx[0]);
+    			}
+
+    			if (dirty & /*disabled*/ 8) {
+    				prop_dev(input1, "disabled", /*disabled*/ ctx[3]);
+    			}
+
+    			if (dirty & /*time*/ 2 && to_number(input1.value) !== /*time*/ ctx[1]) {
+    				set_input_value(input1, /*time*/ ctx[1]);
+    			}
+
+    			if (dirty & /*disabled*/ 8) {
+    				prop_dev(input2, "disabled", /*disabled*/ ctx[3]);
+    			}
+
+    			if (dirty & /*done*/ 4) {
+    				input2.checked = /*done*/ ctx[2];
+    			}
+
+    			if (dirty & /*active*/ 16) {
+    				toggle_class(button0, "active", /*active*/ ctx[4]);
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(tr);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Task", slots, []);
+    	let { name } = $$props, { time } = $$props, { done } = $$props;
+    	let disabled = true;
+    	let active = false;
+    	let oldtime = time;
+
+    	function toggle() {
+    		if (active && (time > 90 || time < 0 || !time)) {
+    			$$invalidate(1, time = oldtime);
+    		} else {
+    			oldtime = time;
+    		}
+
+    		$$invalidate(3, disabled = !disabled);
+    		$$invalidate(4, active = !active);
+    	}
+
+    	const dispatch = createEventDispatcher();
+
+    	function remove() {
+    		dispatch("delete");
+    	}
+
+    	const writable_props = ["name", "time", "done"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Task> was created with unknown prop '${key}'`);
+    	});
+
+    	function input0_input_handler() {
+    		name = this.value;
+    		$$invalidate(0, name);
+    	}
+
+    	function input1_input_handler() {
+    		time = to_number(this.value);
+    		$$invalidate(1, time);
+    	}
+
+    	function input2_change_handler() {
+    		done = this.checked;
+    		$$invalidate(2, done);
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
+    		if ("time" in $$props) $$invalidate(1, time = $$props.time);
+    		if ("done" in $$props) $$invalidate(2, done = $$props.done);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		name,
+    		time,
+    		done,
+    		disabled,
+    		active,
+    		oldtime,
+    		toggle,
+    		createEventDispatcher,
+    		dispatch,
+    		remove
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
+    		if ("time" in $$props) $$invalidate(1, time = $$props.time);
+    		if ("done" in $$props) $$invalidate(2, done = $$props.done);
+    		if ("disabled" in $$props) $$invalidate(3, disabled = $$props.disabled);
+    		if ("active" in $$props) $$invalidate(4, active = $$props.active);
+    		if ("oldtime" in $$props) oldtime = $$props.oldtime;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		name,
+    		time,
+    		done,
+    		disabled,
+    		active,
+    		toggle,
+    		remove,
+    		input0_input_handler,
+    		input1_input_handler,
+    		input2_change_handler
+    	];
+    }
+
+    class Task extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { name: 0, time: 1, done: 2 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Task",
+    			options,
+    			id: create_fragment$3.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*name*/ ctx[0] === undefined && !("name" in props)) {
+    			console.warn("<Task> was created without expected prop 'name'");
+    		}
+
+    		if (/*time*/ ctx[1] === undefined && !("time" in props)) {
+    			console.warn("<Task> was created without expected prop 'time'");
+    		}
+
+    		if (/*done*/ ctx[2] === undefined && !("done" in props)) {
+    			console.warn("<Task> was created without expected prop 'done'");
+    		}
+    	}
+
+    	get name() {
+    		throw new Error("<Task>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set name(value) {
+    		throw new Error("<Task>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get time() {
+    		throw new Error("<Task>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set time(value) {
+    		throw new Error("<Task>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get done() {
+    		throw new Error("<Task>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set done(value) {
+    		throw new Error("<Task>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/Tasklist.svelte generated by Svelte v3.37.0 */
+
+    const { console: console_1$1 } = globals;
+    const file$2 = "src/Tasklist.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[19] = list[i].name;
+    	child_ctx[20] = list[i].time;
+    	child_ctx[21] = list[i].done;
+    	child_ctx[22] = list;
+    	child_ctx[23] = i;
+    	return child_ctx;
+    }
+
+    // (38:4) {#each userList as { name, time, done }
+    function create_each_block(ctx) {
+    	let task;
+    	let updating_name;
+    	let updating_time;
+    	let updating_done;
+    	let current;
+
+    	function task_name_binding(value) {
+    		/*task_name_binding*/ ctx[11](value, /*name*/ ctx[19], /*each_value*/ ctx[22], /*id*/ ctx[23]);
+    	}
+
+    	function task_time_binding(value) {
+    		/*task_time_binding*/ ctx[12](value, /*time*/ ctx[20], /*each_value*/ ctx[22], /*id*/ ctx[23]);
+    	}
+
+    	function task_done_binding(value) {
+    		/*task_done_binding*/ ctx[13](value, /*done*/ ctx[21], /*each_value*/ ctx[22], /*id*/ ctx[23]);
+    	}
+
+    	function delete_handler() {
+    		return /*delete_handler*/ ctx[14](/*id*/ ctx[23]);
+    	}
+
+    	let task_props = {};
+
+    	if (/*name*/ ctx[19] !== void 0) {
+    		task_props.name = /*name*/ ctx[19];
+    	}
+
+    	if (/*time*/ ctx[20] !== void 0) {
+    		task_props.time = /*time*/ ctx[20];
+    	}
+
+    	if (/*done*/ ctx[21] !== void 0) {
+    		task_props.done = /*done*/ ctx[21];
+    	}
+
+    	task = new Task({ props: task_props, $$inline: true });
+    	binding_callbacks.push(() => bind(task, "name", task_name_binding));
+    	binding_callbacks.push(() => bind(task, "time", task_time_binding));
+    	binding_callbacks.push(() => bind(task, "done", task_done_binding));
+    	task.$on("delete", delete_handler);
+
+    	const block = {
+    		c: function create() {
+    			create_component(task.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(task, target, anchor);
+    			current = true;
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			const task_changes = {};
+
+    			if (!updating_name && dirty & /*userList*/ 128) {
+    				updating_name = true;
+    				task_changes.name = /*name*/ ctx[19];
+    				add_flush_callback(() => updating_name = false);
+    			}
+
+    			if (!updating_time && dirty & /*userList*/ 128) {
+    				updating_time = true;
+    				task_changes.time = /*time*/ ctx[20];
+    				add_flush_callback(() => updating_time = false);
+    			}
+
+    			if (!updating_done && dirty & /*userList*/ 128) {
+    				updating_done = true;
+    				task_changes.done = /*done*/ ctx[21];
+    				add_flush_callback(() => updating_done = false);
+    			}
+
+    			task.$set(task_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(task.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(task.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(task, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(38:4) {#each userList as { name, time, done }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (55:0) {#if (plist)}
+    function create_if_block(ctx) {
+    	let playlist;
+    	let current;
+
+    	playlist = new Playlist({
+    			props: {
+    				userListObj: /*userList*/ ctx[7],
+    				min: /*min*/ ctx[0],
+    				hour: /*hour*/ ctx[1],
+    				breakMusic: /*breakMusic*/ ctx[2],
+    				normalMusic: /*normalMusic*/ ctx[3]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(playlist.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(playlist, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const playlist_changes = {};
+    			if (dirty & /*userList*/ 128) playlist_changes.userListObj = /*userList*/ ctx[7];
+    			if (dirty & /*min*/ 1) playlist_changes.min = /*min*/ ctx[0];
+    			if (dirty & /*hour*/ 2) playlist_changes.hour = /*hour*/ ctx[1];
+    			if (dirty & /*breakMusic*/ 4) playlist_changes.breakMusic = /*breakMusic*/ ctx[2];
+    			if (dirty & /*normalMusic*/ 8) playlist_changes.normalMusic = /*normalMusic*/ ctx[3];
+    			playlist.$set(playlist_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(playlist.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(playlist.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(playlist, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(55:0) {#if (plist)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$2(ctx) {
+    	let table;
+    	let thead;
+    	let th0;
+    	let t1;
+    	let th1;
+    	let t3;
+    	let th2;
+    	let t5;
+    	let th3;
+    	let t7;
+    	let th4;
+    	let t9;
+    	let tbody;
+    	let t10;
+    	let tfoot;
+    	let h4;
+    	let t12;
+    	let tr;
+    	let td0;
+    	let input0;
+    	let t13;
+    	let td1;
+    	let input1;
+    	let t14;
+    	let t15;
+    	let td2;
+    	let input2;
+    	let t16;
+    	let td3;
+    	let button0;
+    	let t18;
+    	let button1;
+    	let t19;
+    	let t20;
+    	let t21;
+    	let if_block_anchor;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value = /*userList*/ ctx[7];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	let if_block = /*plist*/ ctx[8] && create_if_block(ctx);
+
+    	const block = {
+    		c: function create() {
+    			table = element("table");
+    			thead = element("thead");
+    			th0 = element("th");
+    			th0.textContent = "Task:";
+    			t1 = space();
+    			th1 = element("th");
+    			th1.textContent = "Time:";
+    			t3 = space();
+    			th2 = element("th");
+    			th2.textContent = "Done?";
+    			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Edit?";
+    			t7 = space();
+    			th4 = element("th");
+    			th4.textContent = "Remove?";
+    			t9 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t10 = space();
+    			tfoot = element("tfoot");
+    			h4 = element("h4");
+    			h4.textContent = "Add Task";
+    			t12 = space();
+    			tr = element("tr");
+    			td0 = element("td");
+    			input0 = element("input");
+    			t13 = space();
+    			td1 = element("td");
+    			input1 = element("input");
+    			t14 = text(" min");
+    			t15 = space();
+    			td2 = element("td");
+    			input2 = element("input");
+    			t16 = space();
+    			td3 = element("td");
+    			button0 = element("button");
+    			button0.textContent = "+";
+    			t18 = space();
+    			button1 = element("button");
+    			t19 = text("Make into Playlist : ");
+    			t20 = text(/*plist*/ ctx[8]);
+    			t21 = space();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    			add_location(th0, file$2, 30, 4, 675);
+    			add_location(th1, file$2, 31, 4, 694);
+    			add_location(th2, file$2, 32, 4, 713);
+    			add_location(th3, file$2, 33, 4, 732);
+    			add_location(th4, file$2, 34, 4, 751);
+    			add_location(thead, file$2, 29, 2, 663);
+    			add_location(tbody, file$2, 36, 2, 781);
+    			add_location(h4, file$2, 42, 4, 949);
+    			attr_dev(input0, "type", "text");
+    			add_location(input0, file$2, 44, 10, 986);
+    			add_location(td0, file$2, 44, 6, 982);
+    			attr_dev(input1, "type", "number");
+    			attr_dev(input1, "min", "0");
+    			attr_dev(input1, "max", "90");
+    			add_location(input1, file$2, 46, 8, 1054);
+    			add_location(td1, file$2, 45, 6, 1041);
+    			attr_dev(input2, "type", "checkbox");
+    			add_location(input2, file$2, 48, 10, 1143);
+    			add_location(td2, file$2, 48, 6, 1139);
+    			add_location(button0, file$2, 49, 10, 1208);
+    			add_location(td3, file$2, 49, 6, 1204);
+    			add_location(tr, file$2, 43, 4, 971);
+    			add_location(tfoot, file$2, 41, 2, 937);
+    			attr_dev(table, "class", "svelte-c3e669");
+    			add_location(table, file$2, 28, 0, 653);
+    			add_location(button1, file$2, 53, 0, 1287);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, table, anchor);
+    			append_dev(table, thead);
+    			append_dev(thead, th0);
+    			append_dev(thead, t1);
+    			append_dev(thead, th1);
+    			append_dev(thead, t3);
+    			append_dev(thead, th2);
+    			append_dev(thead, t5);
+    			append_dev(thead, th3);
+    			append_dev(thead, t7);
+    			append_dev(thead, th4);
+    			append_dev(table, t9);
+    			append_dev(table, tbody);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+
+    			append_dev(table, t10);
+    			append_dev(table, tfoot);
+    			append_dev(tfoot, h4);
+    			append_dev(tfoot, t12);
+    			append_dev(tfoot, tr);
+    			append_dev(tr, td0);
+    			append_dev(td0, input0);
+    			set_input_value(input0, /*nextTask*/ ctx[4]);
+    			append_dev(tr, t13);
+    			append_dev(tr, td1);
+    			append_dev(td1, input1);
+    			set_input_value(input1, /*nextTime*/ ctx[5]);
+    			append_dev(td1, t14);
+    			append_dev(tr, t15);
+    			append_dev(tr, td2);
+    			append_dev(td2, input2);
+    			input2.checked = /*nextDone*/ ctx[6];
+    			append_dev(tr, t16);
+    			append_dev(tr, td3);
+    			append_dev(td3, button0);
+    			insert_dev(target, t18, anchor);
+    			insert_dev(target, button1, anchor);
+    			append_dev(button1, t19);
+    			append_dev(button1, t20);
+    			insert_dev(target, t21, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[15]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[16]),
+    					listen_dev(input2, "change", /*input2_change_handler*/ ctx[17]),
+    					listen_dev(button0, "click", /*addToUserList*/ ctx[9], false, false, false),
+    					listen_dev(button1, "click", /*click_handler*/ ctx[18], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*userList, remove*/ 1152) {
+    				each_value = /*userList*/ ctx[7];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+
+    			if (dirty & /*nextTask*/ 16 && input0.value !== /*nextTask*/ ctx[4]) {
+    				set_input_value(input0, /*nextTask*/ ctx[4]);
+    			}
+
+    			if (dirty & /*nextTime*/ 32 && to_number(input1.value) !== /*nextTime*/ ctx[5]) {
+    				set_input_value(input1, /*nextTime*/ ctx[5]);
+    			}
+
+    			if (dirty & /*nextDone*/ 64) {
+    				input2.checked = /*nextDone*/ ctx[6];
+    			}
+
+    			if (!current || dirty & /*plist*/ 256) set_data_dev(t20, /*plist*/ ctx[8]);
+
+    			if (/*plist*/ ctx[8]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*plist*/ 256) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(table);
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t18);
+    			if (detaching) detach_dev(button1);
+    			if (detaching) detach_dev(t21);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$2.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Tasklist", slots, []);
+    	let nextTask;
+    	let nextTime = 25;
+    	let nextDone = false;
+    	let userList = [];
+
+    	function addToUserList() {
+    		if (nextTime === undefined || nextTime > 90 || nextTime < 0) ; else {
+    			$$invalidate(7, userList = [
+    				...userList,
+    				{
+    					name: nextTask,
+    					time: nextTime,
+    					done: nextDone
+    				}
+    			]);
+
+    			$$invalidate(4, nextTask = "");
+    			$$invalidate(5, nextTime = 25);
+    			$$invalidate(6, nextDone = false);
+    		}
+
+    		console.log(userList);
+    	}
+
+    	let plist = false;
+
+    	let { min } = $$props,
+    		{ hour } = $$props,
+    		{ breakMusic } = $$props,
+    		{ normalMusic } = $$props;
+
+    	function remove(id) {
+    		userList.splice(id, 1);
+    		$$invalidate(7, userList);
+    	}
+
+    	const writable_props = ["min", "hour", "breakMusic", "normalMusic"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn(`<Tasklist> was created with unknown prop '${key}'`);
+    	});
+
+    	function task_name_binding(value, name, each_value, id) {
+    		each_value[id].name = value;
+    		$$invalidate(7, userList);
+    	}
+
+    	function task_time_binding(value, time, each_value, id) {
+    		each_value[id].time = value;
+    		$$invalidate(7, userList);
+    	}
+
+    	function task_done_binding(value, done, each_value, id) {
+    		each_value[id].done = value;
+    		$$invalidate(7, userList);
+    	}
+
+    	const delete_handler = id => remove(id);
+
+    	function input0_input_handler() {
+    		nextTask = this.value;
+    		$$invalidate(4, nextTask);
+    	}
+
+    	function input1_input_handler() {
+    		nextTime = to_number(this.value);
+    		$$invalidate(5, nextTime);
+    	}
+
+    	function input2_change_handler() {
+    		nextDone = this.checked;
+    		$$invalidate(6, nextDone);
+    	}
+
+    	const click_handler = function () {
+    		$$invalidate(8, plist = !plist);
+    	};
+
+    	$$self.$$set = $$props => {
+    		if ("min" in $$props) $$invalidate(0, min = $$props.min);
+    		if ("hour" in $$props) $$invalidate(1, hour = $$props.hour);
+    		if ("breakMusic" in $$props) $$invalidate(2, breakMusic = $$props.breakMusic);
+    		if ("normalMusic" in $$props) $$invalidate(3, normalMusic = $$props.normalMusic);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Playlist,
+    		Task,
+    		nextTask,
+    		nextTime,
+    		nextDone,
+    		userList,
+    		addToUserList,
+    		plist,
+    		min,
+    		hour,
+    		breakMusic,
+    		normalMusic,
+    		remove
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("nextTask" in $$props) $$invalidate(4, nextTask = $$props.nextTask);
+    		if ("nextTime" in $$props) $$invalidate(5, nextTime = $$props.nextTime);
+    		if ("nextDone" in $$props) $$invalidate(6, nextDone = $$props.nextDone);
+    		if ("userList" in $$props) $$invalidate(7, userList = $$props.userList);
+    		if ("plist" in $$props) $$invalidate(8, plist = $$props.plist);
+    		if ("min" in $$props) $$invalidate(0, min = $$props.min);
+    		if ("hour" in $$props) $$invalidate(1, hour = $$props.hour);
+    		if ("breakMusic" in $$props) $$invalidate(2, breakMusic = $$props.breakMusic);
+    		if ("normalMusic" in $$props) $$invalidate(3, normalMusic = $$props.normalMusic);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		min,
+    		hour,
+    		breakMusic,
+    		normalMusic,
+    		nextTask,
+    		nextTime,
+    		nextDone,
+    		userList,
+    		plist,
+    		addToUserList,
+    		remove,
+    		task_name_binding,
+    		task_time_binding,
+    		task_done_binding,
+    		delete_handler,
+    		input0_input_handler,
+    		input1_input_handler,
+    		input2_change_handler,
+    		click_handler
+    	];
+    }
+
+    class Tasklist extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
+    			min: 0,
+    			hour: 1,
+    			breakMusic: 2,
+    			normalMusic: 3
+    		});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Tasklist",
+    			options,
+    			id: create_fragment$2.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*min*/ ctx[0] === undefined && !("min" in props)) {
+    			console_1$1.warn("<Tasklist> was created without expected prop 'min'");
+    		}
+
+    		if (/*hour*/ ctx[1] === undefined && !("hour" in props)) {
+    			console_1$1.warn("<Tasklist> was created without expected prop 'hour'");
+    		}
+
+    		if (/*breakMusic*/ ctx[2] === undefined && !("breakMusic" in props)) {
+    			console_1$1.warn("<Tasklist> was created without expected prop 'breakMusic'");
+    		}
+
+    		if (/*normalMusic*/ ctx[3] === undefined && !("normalMusic" in props)) {
+    			console_1$1.warn("<Tasklist> was created without expected prop 'normalMusic'");
+    		}
+    	}
+
+    	get min() {
+    		throw new Error("<Tasklist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set min(value) {
+    		throw new Error("<Tasklist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get hour() {
+    		throw new Error("<Tasklist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set hour(value) {
+    		throw new Error("<Tasklist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get breakMusic() {
+    		throw new Error("<Tasklist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set breakMusic(value) {
+    		throw new Error("<Tasklist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get normalMusic() {
+    		throw new Error("<Tasklist>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set normalMusic(value) {
+    		throw new Error("<Tasklist>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/Header.svelte generated by Svelte v3.37.0 */
+
+    const file$1 = "src/Header.svelte";
+
+    function create_fragment$1(ctx) {
+    	let h1;
+    	let t0_value = (/*hour*/ ctx[0] % 12 || 12) + "";
+    	let t0;
+    	let t1;
+
+    	let t2_value = (/*min*/ ctx[1] < 10
+    	? "0" + /*min*/ ctx[1]
+    	: /*min*/ ctx[1]) + "";
+
+    	let t2;
+    	let t3;
+    	let t4_value = (/*hour*/ ctx[0] > 12 ? "PM" : "AM") + "";
+    	let t4;
+    	let t5;
+    	let br;
+    	let t6;
+    	let sub;
+    	let t7;
+    	let t8;
+    	let h2;
+
+    	const block = {
+    		c: function create() {
+    			h1 = element("h1");
+    			t0 = text(t0_value);
+    			t1 = text(":");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			t4 = text(t4_value);
+    			t5 = space();
+    			br = element("br");
+    			t6 = space();
+    			sub = element("sub");
+    			t7 = text(/*desc*/ ctx[2]);
+    			t8 = space();
+    			h2 = element("h2");
+    			h2.textContent = "TFH";
+    			add_location(br, file$1, 26, 2, 576);
+    			attr_dev(sub, "class", "svelte-1sru9z3");
+    			add_location(sub, file$1, 27, 2, 585);
+    			attr_dev(h1, "class", "svelte-1sru9z3");
+    			add_location(h1, file$1, 23, 0, 492);
+    			attr_dev(h2, "class", "svelte-1sru9z3");
+    			add_location(h2, file$1, 29, 0, 609);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			append_dev(h1, t0);
+    			append_dev(h1, t1);
+    			append_dev(h1, t2);
+    			append_dev(h1, t3);
+    			append_dev(h1, t4);
+    			append_dev(h1, t5);
+    			append_dev(h1, br);
+    			append_dev(h1, t6);
+    			append_dev(h1, sub);
+    			append_dev(sub, t7);
+    			insert_dev(target, t8, anchor);
+    			insert_dev(target, h2, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*hour*/ 1 && t0_value !== (t0_value = (/*hour*/ ctx[0] % 12 || 12) + "")) set_data_dev(t0, t0_value);
+
+    			if (dirty & /*min*/ 2 && t2_value !== (t2_value = (/*min*/ ctx[1] < 10
+    			? "0" + /*min*/ ctx[1]
+    			: /*min*/ ctx[1]) + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*hour*/ 1 && t4_value !== (t4_value = (/*hour*/ ctx[0] > 12 ? "PM" : "AM") + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*desc*/ 4) set_data_dev(t7, /*desc*/ ctx[2]);
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(h2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Header", slots, []);
+    	let { version } = $$props;
+    	let { hour } = $$props, { min } = $$props;
+    	let desc = "";
+    	const writable_props = ["version", "hour", "min"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Header> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("version" in $$props) $$invalidate(3, version = $$props.version);
+    		if ("hour" in $$props) $$invalidate(0, hour = $$props.hour);
+    		if ("min" in $$props) $$invalidate(1, min = $$props.min);
+    	};
+
+    	$$self.$capture_state = () => ({ version, hour, min, desc });
+
+    	$$self.$inject_state = $$props => {
+    		if ("version" in $$props) $$invalidate(3, version = $$props.version);
+    		if ("hour" in $$props) $$invalidate(0, hour = $$props.hour);
+    		if ("min" in $$props) $$invalidate(1, min = $$props.min);
+    		if ("desc" in $$props) $$invalidate(2, desc = $$props.desc);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*hour, version*/ 9) {
+    			if (hour === 23) {
+    				$$invalidate(2, desc = "Hour of the Rat");
+    			} else if (hour === 0) {
+    				$$invalidate(2, desc = "Midnight");
+    			} else if (hour === 1) {
+    				$$invalidate(2, desc = "Hour of the Ox");
+    			} else if (hour === 2) {
+    				$$invalidate(2, desc = "Late Hour");
+    			} else if (hour === 3) {
+    				$$invalidate(2, desc = "Hour of the Tiger");
+    			} else if (hour === 4) {
+    				$$invalidate(2, desc = "Morning Hour");
+    			} else if (hour === 5) {
+    				$$invalidate(2, desc = "Daybreak");
+    			} else {
+    				$$invalidate(2, desc = version);
+    			}
+    		}
+    	};
+
+    	return [hour, min, desc, version];
+    }
+
+    class Header extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { version: 3, hour: 0, min: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Header",
+    			options,
+    			id: create_fragment$1.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*version*/ ctx[3] === undefined && !("version" in props)) {
+    			console.warn("<Header> was created without expected prop 'version'");
+    		}
+
+    		if (/*hour*/ ctx[0] === undefined && !("hour" in props)) {
+    			console.warn("<Header> was created without expected prop 'hour'");
+    		}
+
+    		if (/*min*/ ctx[1] === undefined && !("min" in props)) {
+    			console.warn("<Header> was created without expected prop 'min'");
+    		}
+    	}
+
+    	get version() {
+    		throw new Error("<Header>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set version(value) {
+    		throw new Error("<Header>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get hour() {
+    		throw new Error("<Header>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set hour(value) {
+    		throw new Error("<Header>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get min() {
+    		throw new Error("<Header>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set min(value) {
+    		throw new Error("<Header>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.37.0 */
+
+    const { console: console_1 } = globals;
+    const file = "src/App.svelte";
+
+    function create_fragment(ctx) {
+    	let main;
+    	let header;
+    	let t0;
+    	let p0;
+    	let t1;
+    	let t2;
+    	let p1;
+    	let t3;
+    	let t4;
+    	let tasklist;
+    	let t5;
+    	let br;
+    	let t6;
+    	let youtube0;
+    	let t7;
+    	let youtube1;
+    	let current;
+
+    	header = new Header({
+    			props: {
+    				version: /*version*/ ctx[0],
+    				hour: /*hour*/ ctx[2],
+    				min: /*min*/ ctx[3]
+    			},
+    			$$inline: true
+    		});
+
+    	tasklist = new Tasklist({
+    			props: {
+    				min: /*min*/ ctx[3],
+    				hour: /*hour*/ ctx[2],
+    				normalMusic: /*normalMusic*/ ctx[6],
+    				breakMusic: /*breakMusic*/ ctx[5]
+    			},
+    			$$inline: true
+    		});
+
+    	let youtube0_props = { videoId: "g8K21P8CoeI" };
+    	youtube0 = new Youtube({ props: youtube0_props, $$inline: true });
+    	/*youtube0_binding*/ ctx[7](youtube0);
+    	let youtube1_props = { videoId: "XI7Cxdj2pAQ" };
+    	youtube1 = new Youtube({ props: youtube1_props, $$inline: true });
+    	/*youtube1_binding*/ ctx[8](youtube1);
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			create_component(header.$$.fragment);
+    			t0 = space();
+    			p0 = element("p");
+    			t1 = text(/*t*/ ctx[4]);
+    			t2 = space();
+    			p1 = element("p");
+    			t3 = text(/*deltaTime*/ ctx[1]);
+    			t4 = space();
+    			create_component(tasklist.$$.fragment);
+    			t5 = space();
+    			br = element("br");
+    			t6 = space();
+    			create_component(youtube0.$$.fragment);
+    			t7 = space();
+    			create_component(youtube1.$$.fragment);
+    			add_location(p0, file, 91, 2, 2558);
+    			add_location(p1, file, 92, 2, 2571);
+    			add_location(br, file, 96, 2, 2655);
+    			add_location(main, file, 89, 0, 2513);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			mount_component(header, main, null);
+    			append_dev(main, t0);
+    			append_dev(main, p0);
+    			append_dev(p0, t1);
+    			append_dev(main, t2);
+    			append_dev(main, p1);
+    			append_dev(p1, t3);
+    			append_dev(main, t4);
+    			mount_component(tasklist, main, null);
+    			append_dev(main, t5);
+    			append_dev(main, br);
+    			append_dev(main, t6);
+    			mount_component(youtube0, main, null);
+    			append_dev(main, t7);
+    			mount_component(youtube1, main, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			const header_changes = {};
+    			if (dirty & /*version*/ 1) header_changes.version = /*version*/ ctx[0];
+    			if (dirty & /*hour*/ 4) header_changes.hour = /*hour*/ ctx[2];
+    			if (dirty & /*min*/ 8) header_changes.min = /*min*/ ctx[3];
+    			header.$set(header_changes);
+    			if (!current || dirty & /*t*/ 16) set_data_dev(t1, /*t*/ ctx[4]);
+    			if (!current || dirty & /*deltaTime*/ 2) set_data_dev(t3, /*deltaTime*/ ctx[1]);
+    			const tasklist_changes = {};
+    			if (dirty & /*min*/ 8) tasklist_changes.min = /*min*/ ctx[3];
+    			if (dirty & /*hour*/ 4) tasklist_changes.hour = /*hour*/ ctx[2];
+    			if (dirty & /*normalMusic*/ 64) tasklist_changes.normalMusic = /*normalMusic*/ ctx[6];
+    			if (dirty & /*breakMusic*/ 32) tasklist_changes.breakMusic = /*breakMusic*/ ctx[5];
+    			tasklist.$set(tasklist_changes);
+    			const youtube0_changes = {};
+    			youtube0.$set(youtube0_changes);
+    			const youtube1_changes = {};
+    			youtube1.$set(youtube1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(header.$$.fragment, local);
+    			transition_in(tasklist.$$.fragment, local);
+    			transition_in(youtube0.$$.fragment, local);
+    			transition_in(youtube1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(header.$$.fragment, local);
+    			transition_out(tasklist.$$.fragment, local);
+    			transition_out(youtube0.$$.fragment, local);
+    			transition_out(youtube1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(main);
+    			destroy_component(header);
+    			destroy_component(tasklist);
+    			/*youtube0_binding*/ ctx[7](null);
+    			destroy_component(youtube0);
+    			/*youtube1_binding*/ ctx[8](null);
+    			destroy_component(youtube1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function calc_drift(arr) {
+    	// Calculate drift correction.
+    	/*
+      In this example I've used a simple median.
+      You can use other methods, but it's important not to use an average. 
+      If the user switches tabs and back, an average would put far too much
+      weight on the outlier.
+      */
+    	var values = arr.concat(); // copy array so it isn't mutated
+
+    	values.sort(function (a, b) {
+    		return a - b;
+    	});
+
+    	if (values.length === 0) return 0;
+    	var half = Math.floor(values.length / 2);
+    	if (values.length % 2) return values[half];
+    	var median = (values[half - 1] + values[half]) / 2;
+    	return median;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("App", slots, []);
+    	let { version } = $$props;
+    	let interval = 1000; // ms
+    	let expected = Date.now() + interval;
+    	let t = new Date();
+    	let deltaTime = t.getSeconds();
+    	let hour = t.getHours();
+    	let min = t.getMinutes();
+    	let drift_history = [];
+    	let drift_history_samples = 10;
+    	let drift_correction = 0;
+    	setTimeout(step, interval);
+
+    	function step() {
+    		var dt = Date.now() - expected; // the drift (positive for overshooting)
+
+    		if (dt > interval) {
+    			// something really bad happened. Maybe the browser (tab) was inactive?
+    			// possibly special handling to avoid futile "catch up" run
+    			console.log("Significant time drift ... Correcting ...");
+
+    			$$invalidate(4, t = new Date());
+    			$$invalidate(2, hour = t.getHours());
+    			$$invalidate(3, min = t.getMinutes());
+    			$$invalidate(1, deltaTime = t.getSeconds());
+    		}
+
+    		// do what is to be done
+    		$$invalidate(1, deltaTime++, deltaTime);
+
+    		// don't update the history for exceptionally large values
+    		if (dt <= interval) {
+    			// sample drift amount to history after removing current correction
+    			// (add to remove because the correction is applied by subtraction)
+    			drift_history.push(dt + drift_correction);
+
+    			// predict new drift correction
+    			drift_correction = calc_drift(drift_history);
+
+    			// cap and refresh samples
+    			if (drift_history.length >= drift_history_samples) {
+    				drift_history.shift();
+    			}
+    		}
+
+    		expected += interval;
+
+    		// take into account drift with prediction
+    		setTimeout(step, Math.max(0, interval - dt - drift_correction));
+    	}
+
+    	let breakMusic, normalMusic;
+    	const writable_props = ["version"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	function youtube0_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			normalMusic = $$value;
+    			$$invalidate(6, normalMusic);
+    		});
+    	}
+
+    	function youtube1_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			breakMusic = $$value;
+    			$$invalidate(5, breakMusic);
+    		});
+    	}
+
+    	$$self.$$set = $$props => {
+    		if ("version" in $$props) $$invalidate(0, version = $$props.version);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		Tasklist,
+    		Header,
+    		Playlist,
+    		Youtube,
+    		version,
+    		interval,
+    		expected,
+    		t,
+    		deltaTime,
+    		hour,
+    		min,
+    		drift_history,
+    		drift_history_samples,
+    		drift_correction,
+    		calc_drift,
+    		step,
+    		breakMusic,
+    		normalMusic
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("version" in $$props) $$invalidate(0, version = $$props.version);
+    		if ("interval" in $$props) interval = $$props.interval;
+    		if ("expected" in $$props) expected = $$props.expected;
+    		if ("t" in $$props) $$invalidate(4, t = $$props.t);
+    		if ("deltaTime" in $$props) $$invalidate(1, deltaTime = $$props.deltaTime);
+    		if ("hour" in $$props) $$invalidate(2, hour = $$props.hour);
+    		if ("min" in $$props) $$invalidate(3, min = $$props.min);
+    		if ("drift_history" in $$props) drift_history = $$props.drift_history;
+    		if ("drift_history_samples" in $$props) drift_history_samples = $$props.drift_history_samples;
+    		if ("drift_correction" in $$props) drift_correction = $$props.drift_correction;
+    		if ("breakMusic" in $$props) $$invalidate(5, breakMusic = $$props.breakMusic);
+    		if ("normalMusic" in $$props) $$invalidate(6, normalMusic = $$props.normalMusic);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*deltaTime, min, hour*/ 14) {
+    			{
+    				if (deltaTime === 60) {
+    					$$invalidate(3, min++, min);
+    					$$invalidate(1, deltaTime = 0);
+    				}
+
+    				if (min >= 60) {
+    					$$invalidate(2, hour++, hour);
+    					$$invalidate(3, min = 0);
+    				}
+
+    				if (hour == 24) {
+    					$$invalidate(2, hour = 0);
+    				}
+    			}
+    		}
+    	};
+
+    	return [
+    		version,
+    		deltaTime,
+    		hour,
+    		min,
+    		t,
+    		breakMusic,
+    		normalMusic,
+    		youtube0_binding,
+    		youtube1_binding
+    	];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, { version: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*version*/ ctx[0] === undefined && !("version" in props)) {
+    			console_1.warn("<App> was created without expected prop 'version'");
+    		}
+    	}
+
+    	get version() {
+    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set version(value) {
+    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    const app = new App({
+      target: document.body,
+      props: {
+        version: "Beta",
+      },
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map

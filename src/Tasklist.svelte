@@ -18,16 +18,12 @@
     }
     console.log(userList);
   }
-  let test = false;
-  export let min, breakMusic, normalMusic;
-  let state = false;
-  function playToggle() {
-    state = !state;
-  }
+  let plist = false;
+  export let min, hour, breakMusic, normalMusic;
   function remove(id){
     userList.splice(id,1);
     userList = userList;
-  }
+  } 
 </script>
 
 <table>
@@ -55,10 +51,9 @@
     </tr>
   </tfoot>
 </table>
-<button on:click={() => (test = !test)}>Make into Playlist : {test}</button>
-{#if test}
-  <button on:click={playToggle}>Play:{state}</button>
-  <Playlist userListObj={userList} {min} {breakMusic} {normalMusic} {state} />
+<button on:click={(function(){plist = !plist})}>Make into Playlist : {plist}</button>
+{#if (plist)}
+  <Playlist userListObj={userList} {min} {hour} {breakMusic} {normalMusic} />
 {/if}
 
 <style>

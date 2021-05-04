@@ -85,7 +85,6 @@
     }
   }
   let breakMusic, normalMusic;
-  
 </script>
 
 <main>
@@ -94,8 +93,9 @@
   <p>
     {deltaTime}
   </p>
-  <Tasklist {min} {normalMusic} {breakMusic} />
+  <Tasklist {min} {hour} {normalMusic} {breakMusic} />
   <br />
+
   <Youtube videoId="g8K21P8CoeI"
   bind:this={normalMusic} />
   <Youtube videoId="XI7Cxdj2pAQ"
