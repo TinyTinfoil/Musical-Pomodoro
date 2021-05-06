@@ -87,28 +87,18 @@ import { browser } from "node:process";
     }
   }
   let plist = false;
-  function messanger(id, message, callback) {
-    console.log(id+message+"messanger fired")
-    browser.tabs.sendMessage(id, ({}[message] = true)).then((response) => {
-      console.log("Message from the content script:");
-      console.log(response, message);
-      callback();
-    });
-  }
-  function getPlayerID(player){
-    browser.runtime.sendMessage({}["GetID"] = player).then(
-      (response) => {
-        console.log("Got ID:",response,player);
-        return response;
-      }
-    )
-  }
+  async function messanger(id,message){
+    let resp = await browser.tabs.sendMessage(id,{message:true});
+    console.log("Message from the content script:");
+    console.log(resp,message);
+    return resp;
+ }
   let normalMusic = {};
   let breakMusic = {};
-  normalMusic.play = ()  => messanger(getPlayerID("normalMusic"),"play");
-  normalMusic.pause = () => messanger(getPlayerID("normalMusic"),"pause");
-  breakMusic.play = () => messanger(getPlayerID("breakMusic"),"play");
-  breakMusic.pause = () => messanger(getPlayerID("breakMusic"),"pause");
+  normalMusic.play = async ()  => messanger(await browser.runtime.sendMessage({"GetID":"normalMusic"}),"play");
+  normalMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"normalMusic"}),"pause");
+  breakMusic.play = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"play");
+  breakMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"pause");
 </script>
 
 <main>
