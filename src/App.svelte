@@ -3,7 +3,7 @@
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
   import { userList } from "./stores.js";
-import { browser } from "node:process";
+  //import { browser } from "node:process";
   export let version;
   let interval = 1000; // ms
   let expected = Date.now() + interval;
