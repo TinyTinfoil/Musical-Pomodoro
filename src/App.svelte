@@ -114,6 +114,12 @@
       plist = !plist;
     }}>Make into Playlist : {plist}</button
   >
+  <button
+    on:click={function () {
+      $userList = [];
+      localStorage.removeItem('userList');
+    }}>Nuke Task List (removes cache)</button
+  >
   {#if plist && $userList != []}
     <Playlist userListObj={$userList} {min} {hour} {breakMusic} {normalMusic} />
   {/if}
