@@ -1,10 +1,13 @@
 <script>
-  export let userListObj, min;
+import { userList } from "./stores";
+export let userListObj, min;
   let windowList = [];
   let index = 0;
-  userListObj.forEach((e) => {
+  userListObj.forEach((e,i) => {
     if (e.done === false) {
-      windowList.push(e);
+      windowList.push({...e,callback:()=>{
+        $userList[i].done = true;
+      }});
       windowList.push({
         name: "Break",
         time: 5,
@@ -35,6 +38,7 @@
       windowList[index].time--;
     } else if (windowList.length > index) {
       windowList[index].done = true;
+      if(windowList[index].callback!=null) windowList[index].callback();
       index++;
       playMusic();
     }
