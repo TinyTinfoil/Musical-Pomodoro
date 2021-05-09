@@ -3,8 +3,7 @@
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
   import { userList } from "./stores.js";
-import { onDestroy } from "svelte";
-import { text } from "svelte/internal";
+  import { onDestroy } from "svelte";
   //import { browser } from "node:process";
   export let version;
   let interval = 1000; // ms
@@ -75,39 +74,56 @@ import { text } from "svelte/internal";
     setTimeout(step, Math.max(0, interval - dt - drift_correction));
   }
 
-  $: {
-    if (deltaTime === 60) {
-      min++;
-      deltaTime = 0;
-    }
-    if (min >= 60) {
-      hour++;
-      min = 0;
-    }
-    if (hour == 24) {
-      hour = 0;
-    }
+  $: if (deltaTime === 60) {
+    min++;
+    deltaTime = 0;
+  }
+  $: if (min >= 60) {
+    hour++;
+    min = 0;
+  }
+  $: if (hour === 24) {
+    hour = 0;
   }
   let plist = false;
-  async function messanger(id,message){
-    return await browser.tabs.sendMessage(id,{[message]:true});
- }
+  async function messanger(id, message) {
+    return await browser.tabs.sendMessage(id, { [message]: true });
+  }
   let normalMusic = {};
   let breakMusic = {};
-  normalMusic.play = async ()  => messanger(await browser.runtime.sendMessage({"GetID":"normalMusic"}),"play");
-  normalMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"normalMusic"}),"pause");
-  breakMusic.play = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"play");
-  breakMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"pause");
+  normalMusic.play = async () =>
+    messanger(
+      await browser.runtime.sendMessage({ GetID: "normalMusic" }),
+      "play"
+    );
+  normalMusic.pause = async () =>
+    messanger(
+      await browser.runtime.sendMessage({ GetID: "normalMusic" }),
+      "pause"
+    );
+  breakMusic.play = async () =>
+    messanger(
+      await browser.runtime.sendMessage({ GetID: "breakMusic" }),
+      "play"
+    );
+  breakMusic.pause = async () =>
+    messanger(
+      await browser.runtime.sendMessage({ GetID: "breakMusic" }),
+      "pause"
+    );
 
-  if (localStorage.getItem('userList')!=null) Object.assign($userList, JSON.parse(localStorage.getItem('userList')));
-  const unsubscribe = userList.subscribe(() => (localStorage.setItem('userList', JSON.stringify($userList))))
-  onDestroy(unsubscribe)
+  if (localStorage.getItem("userList") != null)
+    Object.assign($userList, JSON.parse(localStorage.getItem("userList")));
+  const unsubscribe = userList.subscribe(() =>
+    localStorage.setItem("userList", JSON.stringify($userList))
+  );
+  onDestroy(unsubscribe);
 
-  function nuke () {
-      $userList = [];
-      localStorage.removeItem('userList');
-    }
-    let speak = false;
+  function nuke() {
+    $userList = [];
+    localStorage.removeItem("userList");
+  }
+  let speak = false;
 </script>
 
 <main>
@@ -120,34 +136,67 @@ import { text } from "svelte/internal";
   <br />
   <button
     on:click={function () {
-      plist = !plist;
+      console.log($userList);
+      if ($userList.length !== 0) plist = !plist;
     }}>Make into Playlist : {plist}</button
   >
+  <button on:click={nuke}>Nuke Task List (removes cache)</button>
   <button
-    on:click={nuke}>Nuke Task List (removes cache)</button
+    on:click={function () {
+      var dl = document.createElement("a");
+      dl.setAttribute(
+        "href",
+        "data:application/json;charset=utf-8," +
+          encodeURIComponent(JSON.stringify($userList))
+      );
+      dl.setAttribute("download", "tasks.json");
+      dl.click();
+    }}
+    >Export tasks to file <img
+      src="images/save.svg"
+      width="16"
+      alt="Save to file"
+    /></button
+  ><button>
+    <label>
+      <input
+        type="file"
+        style="display: none;"
+        on:change={async function () {
+          let f = await this.files[0].text();
+          $userList = JSON.parse(f);
+        }}
+      />
+      Load tasks from file
+    </label></button
   >
-  <button
-    on:click={
-      function() {
-  var dl = document.createElement('a');
-  dl.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify($userList)));
-  dl.setAttribute('download', 'tasks.json');
-  dl.click();
-}
-}>Export tasks to file</button
-  >
-  <input type=file on:change={
-    async function() {
-      let f = await this.files[0].text();
-      $userList = JSON.parse(f)
-    }
-  }>
-  <label>
-  <input type=checkbox bind:checked={speak}>
-  Speak cues
-</label>
+  <label style="display:inline;">
+    <input type="checkbox" bind:checked={speak} />
+    Speak cues
+  </label>
 
-  {#if plist && $userList != []}
-    <Playlist userListObj={$userList} {speak} {min} {hour} {breakMusic} {normalMusic} />
+  {#if plist}
+    <Playlist
+      userListObj={$userList}
+      {speak}
+      {min}
+      {hour}
+      {breakMusic}
+      {normalMusic}
+    />
   {/if}
 </main>
+
+<style>
+  :global(input:disabled) {
+    border-width: 0px;
+    border: none;
+    background-color: initial;
+    color: initial;
+  }
+  :global(table) {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+  }
+</style>

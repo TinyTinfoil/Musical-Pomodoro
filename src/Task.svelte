@@ -44,4 +44,15 @@
   .active {
     background-color: rgb(39, 99, 39);
   }
+  input[type="checkbox"]{
+    appearance: none;
+    content : url("../images/square.svg");
+    width : 2.5em;
+  }
+  input:checked{
+    appearance: none;
+    content : url("../images/check-square.svg");
+    width : 2.5em;
+  }
+  
 </style>

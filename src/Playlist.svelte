@@ -56,40 +56,48 @@ export let userListObj, min;
     }
     totalTime = accumulator;
     estimatedComplete = {
-      _hour: hour,
-      _min: min,
-    };
-      estimatedComplete._hour = (estimatedComplete._hour + Math.floor((estimatedComplete._min + totalTime) / 60)) % 24
-      estimatedComplete._min = (estimatedComplete._min+totalTime)%60;
+      _hour: (hour + Math.floor((min + totalTime) / 60)) % 24,
+      _min : (min+totalTime)%60
+    }
   }
-  $:{
-    if(!playing) {
+  $: if(!playing) {
       normalMusic.pause()
       breakMusic.pause()
     } else{
       playMusic()
     }
-  }
 </script>
 
+<table>
 {#each windowList as { name, time, done }}
-  <br />
-  <span>{name}</span>
-  <span>{time} min</span>
-  {#if done !== undefined}<input
+  <tr>
+  <td>{name}</td>
+  <td>{time} min</td>
+  {#if done !== undefined}<td><input
       type="checkbox"
       bind:checked={done}
       disabled
-    />{/if}
+    /></td>{/if}
+    </tr>
 {/each}
+</table>
 
 <button
   on:click={() => {
     playing = !playing;
-  }}>Play this</button
+  }}><img src={playing ? "images/stop-circle.svg":"images/play-circle.svg"} width="32" alt={playing ? "Stop Playing?":"Play?"}></button
 >
-{#if (playing)}
-  <p>Now Playing</p>
-{/if}
 <p>Playlist has {totalTime} minutes remaining. This will finish at aprox. {estimatedComplete._hour % 12 || 12}:{estimatedComplete._min < 10 ? "0" + estimatedComplete._min : estimatedComplete._min}
   {estimatedComplete._hour > 12 ? "PM" : "AM"}</p>
+<style>
+  input[type="checkbox"]{
+    appearance: none;
+    content : url("../images/square.svg");
+    width : 2.5em;
+  }
+  input:checked{
+    appearance: none;
+    content : url("../images/check-square.svg");
+    width : 2.5em;
+  }
+</style>

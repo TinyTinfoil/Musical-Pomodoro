@@ -16,10 +16,10 @@
       nextDone = false;
     }
   }
-  function remove(id){
-    $userList.splice(id,1);
+  function remove(id) {
+    $userList.splice(id, 1);
     $userList = $userList;
-  } 
+  }
 </script>
 
 <table>
@@ -31,8 +31,8 @@
     <th>Remove?</th>
   </thead>
   <tbody>
-    {#each $userList as { name, time, done },id}
-      <Task bind:name bind:time bind:done on:delete={() => (remove(id))}/>
+    {#each $userList as { name, time, done }, id}
+      <Task bind:name bind:time bind:done on:delete={() => remove(id)} />
     {/each}
   </tbody>
   <tfoot>
@@ -47,12 +47,3 @@
     </tr>
   </tfoot>
 </table>
-
-
-<style>
-  table {
-    width: 70%;
-    margin: auto;
-    text-align: center;
-  }
-</style>
