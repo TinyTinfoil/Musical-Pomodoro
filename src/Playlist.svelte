@@ -23,14 +23,17 @@ export let userListObj, min;
   export let hour;
   let playing = false;
   let accumulator = 0;
+  export let speak = false;
   function playMusic(){
     if (windowList[index].done === undefined) {
         normalMusic.pause();
         breakMusic.play();
+        
       } else {
         normalMusic.play();
         breakMusic.pause();
       }
+    if (speak) speechSynthesis.speak(new window.SpeechSynthesisUtterance(windowList[index].name));
   }
   function updr() {
     if (!playing) return;
@@ -56,11 +59,9 @@ export let userListObj, min;
       _hour: hour,
       _min: min,
     };
-    if (estimatedComplete._min + totalTime >= 60) {
-      estimatedComplete._hour++;
-      if (estimatedComplete._hour == 24) estimatedComplete._hour = 0;
-      estimatedComplete._min = estimatedComplete._min + (totalTime % 60);
-    } else estimatedComplete._min += totalTime;
+      estimatedComplete._min = (estimatedComplete._min+totalTime)%60;
+      estimatedComplete._hour += Math.floor((estimatedComplete._min + totalTime) / 60)
+      estimatedComplete._hour %= 24
   }
   $:{
     if(!playing) {

@@ -3,6 +3,8 @@
   import Header from "./Header.svelte";
   import Playlist from "./Playlist.svelte";
   import { userList } from "./stores.js";
+import { onDestroy } from "svelte";
+import { text } from "svelte/internal";
   //import { browser } from "node:process";
   export let version;
   let interval = 1000; // ms
@@ -99,6 +101,16 @@
   normalMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"normalMusic"}),"pause");
   breakMusic.play = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"play");
   breakMusic.pause = async () => messanger(await browser.runtime.sendMessage({"GetID":"breakMusic"}),"pause");
+
+  if (localStorage.getItem('userList')!=null) Object.assign($userList, JSON.parse(localStorage.getItem('userList')));
+  const unsubscribe = userList.subscribe(() => (localStorage.setItem('userList', JSON.stringify($userList))))
+  onDestroy(unsubscribe)
+
+  function nuke () {
+      $userList = [];
+      localStorage.removeItem('userList');
+    }
+    let speak = false;
 </script>
 
 <main>
@@ -115,12 +127,30 @@
     }}>Make into Playlist : {plist}</button
   >
   <button
-    on:click={function () {
-      $userList = [];
-      localStorage.removeItem('userList');
-    }}>Nuke Task List (removes cache)</button
+    on:click={nuke}>Nuke Task List (removes cache)</button
   >
+  <button
+    on:click={
+      function() {
+  var dl = document.createElement('a');
+  dl.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify($userList)));
+  dl.setAttribute('download', 'tasks.json');
+  dl.click();
+}
+}>Export tasks to file</button
+  >
+  <input type=file on:change={
+    async function() {
+      let f = await this.files[0].text();
+      $userList = JSON.parse(f)
+    }
+  }>
+  <label>
+  <input type=checkbox bind:checked={speak}>
+  Speak cues
+</label>
+
   {#if plist && $userList != []}
-    <Playlist userListObj={$userList} {min} {hour} {breakMusic} {normalMusic} />
+    <Playlist userListObj={$userList} {speak} {min} {hour} {breakMusic} {normalMusic} />
   {/if}
 </main>

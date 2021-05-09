@@ -1,10 +1,6 @@
 <script>
   import Task from "./Task.svelte";
   import { userList } from "./stores.js";
-  import { onDestroy } from "svelte";
-  if (localStorage.getItem('userList')!=null) Object.assign($userList, JSON.parse(localStorage.getItem('userList')));
-  const unsubscribe = userList.subscribe(() => (localStorage.setItem('userList', JSON.stringify($userList))))
-  onDestroy(unsubscribe)
   let nextTask;
   let nextTime = 25;
   let nextDone = false;
