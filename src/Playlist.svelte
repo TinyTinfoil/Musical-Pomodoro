@@ -59,9 +59,8 @@ export let userListObj, min;
       _hour: hour,
       _min: min,
     };
+      estimatedComplete._hour = (estimatedComplete._hour + Math.floor((estimatedComplete._min + totalTime) / 60)) % 24
       estimatedComplete._min = (estimatedComplete._min+totalTime)%60;
-      estimatedComplete._hour += Math.floor((estimatedComplete._min + totalTime) / 60)
-      estimatedComplete._hour %= 24
   }
   $:{
     if(!playing) {

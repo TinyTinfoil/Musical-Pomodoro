@@ -90,10 +90,7 @@ import { text } from "svelte/internal";
   }
   let plist = false;
   async function messanger(id,message){
-    let resp = await browser.tabs.sendMessage(id,{[message]:true});
-    console.log("Message from the content script:");
-    console.log(resp,message);
-    return resp;
+    return await browser.tabs.sendMessage(id,{[message]:true});
  }
   let normalMusic = {};
   let breakMusic = {};

@@ -15,7 +15,6 @@
       nextTime = 25;
       nextDone = false;
     }
-    console.log($userList);
   }
   function remove(id){
     $userList.splice(id,1);
