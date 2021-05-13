@@ -28,7 +28,7 @@ function serve() {
 	};
 }
 
-export default {
+export default [{
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
@@ -73,4 +73,15 @@ export default {
 	watch: {
 		clearScreen: false
 	}
-};
+},
+{
+	input: {
+		background : 'src/manager.js',
+		popup : 'src/popup.js',
+		content : 'src/youtube.js'
+	},
+	output:{
+		entryFileNames: '[name].js',
+		dir: 'public'
+	}
+}];
