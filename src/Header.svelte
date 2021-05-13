@@ -27,7 +27,7 @@
   <br />
   <sub>{desc}</sub>
 </h1>
-<h2>TFH</h2>
+<h2>Musical Pomodoro</h2>
 
 <style>
   h1 {
