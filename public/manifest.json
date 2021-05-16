@@ -28,10 +28,9 @@
     ]
   },
   
-  "page_action": {
+  "browser_action": {
     "default_icon": "favicon.svg",
     "default_title": "MusicalPomodoro",
-    "default_popup": "popup.html",
-    "browser_style" : true
+    "default_popup": "popup.html"
   }
 }

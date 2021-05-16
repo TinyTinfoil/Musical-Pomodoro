@@ -34,6 +34,9 @@ function removeNaggers(){
     console.log("Removed 'You there?' pausing notification - Musical Pomodoro")
 }
 browser.runtime.onMessage.addListener(request => {
+  if (request.exists) {
+    return Promise.resolve(true);
+  }
   if(request.setup){
     if(document.querySelector("video.html5-main-video")!=null){
         return Promise.resolve(true);

@@ -15,7 +15,7 @@ Download the zip of this extension. Then, go to about:debugging (or your browser
 
 *For devs only*
 
-You'll need to clone the directory and then run `npm install` to install all the dependencies. The MusicalPomodoro page itself is written with lots of [svelte](https://svelte.dev) components, while the other parts of the extension are pure Javascript and HTML. This extension uses the WebExtensions [polyfill](https://github.com/mozilla/webextension-polyfill#basic-setup) directly inside the public folder.
+You'll need to clone the directory and then run `npm install` to install all the dependencies. The MusicalPomodoro page itself is written with lots of [svelte](https://svelte.dev) components, while the other parts of the extension are pure Javascript and HTML. This extension uses the WebExtensions [polyfill](https://github.com/mozilla/webextension-polyfill#basic-setup) directly inside the public folder, where the popup.html and index.html are also stored.
 Use `npm run build` to build the extension inside the public directory. `npm run dev` works only with the extension page.
 
 ### Choosing Music
