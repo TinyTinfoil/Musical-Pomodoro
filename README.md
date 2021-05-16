@@ -16,7 +16,7 @@ Download the zip of this extension. Then, go to about:debugging (or your browser
 *For devs only*
 
 
-You'll need to clone the directory and then run `npm install` to install all the dependencies. The MusicalPomodoro page itself is written with lots of ![svelte](https://svelte.dev) components, while the other parts of the extension are pure Javascript and HTML.
+You'll need to clone the directory and then run `npm install` to install all the dependencies. The MusicalPomodoro page itself is written with lots of [svelte](https://svelte.dev) components, while the other parts of the extension are pure Javascript and HTML.
 Use `npm run build` to build the extension inside the public directory. `npm run dev` works only with the extension page.
 
 ### Choosing Music
