@@ -67,7 +67,6 @@ There is an estimated completion time displayed below. If you let your computer 
 * Remember, you can play *anything* from a tab on YouTube. This includes playlists and things like the watch later queue.
 * Let your music playlist be more intense than the break playlist, and within them, have lighter songs at the top and more intense songs at the bottom
 * Sound effects, if you choose to use them, work best in your break playlist (although I'm thinking of adding the ability to have dedicated sound effects in the future)
-* Ya can't cheat the timer. If you shut your computer away after an extended break, the timer will adjust the remaining times.
+* You can't cheat the timer. If you shut your computer away after an extended break, the timer will adjust the remaining times.
 * But at the same time, make sure that you **don't make your computer sleep when you're actively working on a task or during a break**, because the timer won't count it.
 
-<sup><sub>If you stay up all night, the timer and the night might become imperishable</sub></sup> 
