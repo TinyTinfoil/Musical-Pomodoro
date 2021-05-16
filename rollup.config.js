@@ -4,7 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-
+import copy from 'rollup-plugin-copy';
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -83,5 +83,13 @@ export default [{
 	output:{
 		entryFileNames: '[name].js',
 		dir: 'public'
-	}
+	},
+	plugins: [
+		copy({
+		  targets: [
+			{ src: 'src/manifest.json', dest: 'public' }
+		  ]
+		}),
+		production && terser()
+	  ]
 }];

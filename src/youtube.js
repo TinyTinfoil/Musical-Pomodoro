@@ -26,11 +26,12 @@ const runInPageContext = (method, ...args) => {
   document.documentElement.prepend(scriptElement);
 };
 //removes the annoying "You there?" notification
+//This is because the notification autopauses playback, which interferes with the timer's playback control
 function removeNaggers(){
     window._lact = null
     document.querySelector('ytd-watch-flexy').youthereDataChanged_ = null;
     document.querySelector('ytd-watch-flexy').youThereManager_ = null;
-    console.log("Removed annoyances")
+    console.log("Removed 'You there?' pausing notification - Musical Pomodoro")
 }
 browser.runtime.onMessage.addListener(request => {
   if(request.setup){

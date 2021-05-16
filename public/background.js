@@ -1,13 +1,1 @@
-let players = {};
-players.normalMusic = -1;
-players.breakMusic = -2;
-browser.runtime.onMessage.addListener(request => {
-	console.log(request);
-	console.log(players);
-	if(request.GetID){
-		return Promise.resolve(players[request.GetID]);
-	}
-	if(request.SetID){
-		return Promise.resolve(players[request.SetID.name]=request.SetID.value);
-	}
-});
+let e={normalMusic:-1,breakMusic:-2};browser.runtime.onMessage.addListener((r=>r.GetID?Promise.resolve(e[r.GetID]):r.SetID?Promise.resolve(e[r.SetID.name]=r.SetID.value):void 0));

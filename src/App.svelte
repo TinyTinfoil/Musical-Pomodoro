@@ -4,7 +4,7 @@
   import Playlist from "./Playlist.svelte";
   import { userList } from "./stores.js";
   import { onDestroy } from "svelte";
-  //import { browser } from "node:process";
+  
   export let version;
   let interval = 1000; // ms
   let expected = Date.now() + interval;
@@ -18,59 +18,40 @@
 
   function calc_drift(arr) {
     // Calculate drift correction.
-
-    /*
-  In this example I've used a simple median.
-  You can use other methods, but it's important not to use an average. 
-  If the user switches tabs and back, an average would put far too much
-  weight on the outlier.
-  */
-
-    var values = arr.concat(); // copy array so it isn't mutated
+    let values = arr.concat(); // copy array
 
     values.sort(function (a, b) {
       return a - b;
     });
     if (values.length === 0) return 0;
-    var half = Math.floor(values.length / 2);
+    let half = Math.floor(values.length / 2);
     if (values.length % 2) return values[half];
-    var median = (values[half - 1] + values[half]) / 2.0;
+    let median = (values[half - 1] + values[half]) / 2.0;
 
     return median;
   }
 
   setTimeout(step, interval);
   function step() {
-    var dt = Date.now() - expected; // the drift (positive for overshooting)
+    let dt = Date.now() - expected; // the drift (positive for overshooting)
     if (dt > interval) {
-      // something really bad happened. Maybe the browser (tab) was inactive?
-      // possibly special handling to avoid futile "catch up" run
       console.log(
-        "Significant time drift ... Correcting ... (if you get this message many times, please contact us, because it's likely a bug)"
+        "Significant time drift ..."
       );
       t = new Date();
       hour = t.getHours();
       min = t.getMinutes();
       deltaTime = t.getSeconds();
     }
-    // do what is to be done
     deltaTime++;
-    // don't update the history for exceptionally large values
     if (dt <= interval) {
-      // sample drift amount to history after removing current correction
-      // (add to remove because the correction is applied by subtraction)
       drift_history.push(dt + drift_correction);
-
-      // predict new drift correction
       drift_correction = calc_drift(drift_history);
-
-      // cap and refresh samples
       if (drift_history.length >= drift_history_samples) {
         drift_history.shift();
       }
     }
     expected += interval;
-    // take into account drift with prediction
     setTimeout(step, Math.max(0, interval - dt - drift_correction));
   }
 
@@ -128,22 +109,17 @@
 
 <main>
   <Header {version} {hour} {min} />
-  <p>{t}</p>
-  <p>
-    {deltaTime}
-  </p>
   <Tasklist />
   <br />
   <button
     on:click={function () {
-      console.log($userList);
       if ($userList.length !== 0) plist = !plist;
     }}>Make into Playlist : {plist}</button
   >
   <button on:click={nuke}>Nuke Task List (removes cache)</button>
   <button
     on:click={function () {
-      var dl = document.createElement("a");
+      let dl = document.createElement("a");
       dl.setAttribute(
         "href",
         "data:application/json;charset=utf-8," +
