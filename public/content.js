@@ -1,1 +1,34 @@
-browser.runtime.onMessage.addListener((e=>e.exists?Promise.resolve(!0):e.setup?null!=document.querySelector("video.html5-main-video")?Promise.resolve(!0):Promise.resolve(!1):e.pause?(document.querySelector("video.html5-main-video").pause(),Promise.resolve(!0)):e.play?(document.querySelector("video.html5-main-video").play(),Promise.resolve(!0)):void 0)),document.addEventListener("DOMContentLoaded",((e,...t)=>{const o=`\n    // Parse and run the method with its arguments.\n    (${e instanceof Function?e.toString():`() => { ${e} }`})(...${JSON.stringify(t)});\n\n    // Remove the script element to cover our tracks.\n    document.currentScript.parentElement\n      .removeChild(document.currentScript);\n  `,n=document.createElement("script");n.innerHTML=o,document.documentElement.prepend(n)})((function(){window._lact=null,document.querySelector("ytd-watch-flexy").youthereDataChanged_=null,document.querySelector("ytd-watch-flexy").youThereManager_=null,console.log("Removed 'You there?' pausing notification - Musical Pomodoro")})));
+browser.runtime.onMessage.addListener(request => {
+  if (request.exists) {
+    return Promise.resolve(true);
+  }
+  if(request.setup){
+    if(document.querySelector("video.html5-main-video")!=null){
+        return Promise.resolve(true);
+    } else {
+        return Promise.resolve(false);
+    }
+}
+if(request.pause){
+    document.querySelector("video.html5-main-video").pause();
+    return Promise.resolve(true);
+}
+if(request.play){
+    document.querySelector("video.html5-main-video").play();
+    return Promise.resolve(true);
+}
+});
+//removes the "You there?" notification
+//This is because the notification autopauses playback, which interferes with the timer's playback control
+document.addEventListener('DOMContentLoaded', () => {
+  const scriptElement = document.createElement('script');
+  scriptElement.innerHTML = `(function (){
+    window._lact = null
+    document.querySelector('ytd-watch-flexy').youthereDataChanged_ = null;
+    document.querySelector('ytd-watch-flexy').youThereManager_ = null;
+    console.log("Removed 'You there?' pausing notification - Musical Pomodoro")
+    })();
+    document.currentScript.parentElement
+    .removeChild(document.currentScript);`;
+  document.documentElement.prepend(scriptElement);
+});

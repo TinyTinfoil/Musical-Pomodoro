@@ -89,7 +89,6 @@ export default [{
 		  targets: [
 			{ src: 'src/manifest.json', dest: 'public' }
 		  ]
-		}),
-		production && terser()
+		})
 	  ]
 }];
