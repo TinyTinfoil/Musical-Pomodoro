@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "MusicalPomodoro",
-  "version": "1.0",
+  "version": "1.0.2",
 
   "description": "A pomodoro-like timer that syncs working and break playlists to the tasks that you are working on",
 

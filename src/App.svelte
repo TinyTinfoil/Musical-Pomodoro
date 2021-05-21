@@ -110,7 +110,8 @@
 <main>
   <Header {version} {hour} {min} />
   <Tasklist />
-  <br />
+  <details open>
+    <summary>Options</summary>
   <button
     on:click={function () {
       if ($userList.length !== 0) plist = !plist;
@@ -150,7 +151,7 @@
     <input type="checkbox" bind:checked={speak} />
     Speak cues
   </label>
-
+</details>
   {#if plist}
     <Playlist
       userListObj={$userList}
@@ -174,5 +175,22 @@
     width: 70%;
     margin: auto;
     text-align: center;
+  }
+  main{
+    margin: 0% 1em;
+  }
+  :global(body){
+    background: linear-gradient(crimson,white);
+  }
+  :global(button){
+  background-color:slategray;
+  border: none;
+  padding: 15px 32px;
+  margin: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+	font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   }
 </style>
