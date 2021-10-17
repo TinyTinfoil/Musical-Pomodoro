@@ -30,5 +30,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
     document.currentScript.parentElement
     .removeChild(document.currentScript);`;
-  document.documentElement.prepend(scriptElement);
+  document.documentElement.append(scriptElement);
 });
