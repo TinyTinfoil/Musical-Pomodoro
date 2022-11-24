@@ -3,7 +3,7 @@ import App from "./App.svelte";
 const app = new App({
   target: document.body,
   props: {
-    version: browser.runtime.getManifest().version,
+    version: 1.01,
   },
 });
 

@@ -15,7 +15,6 @@
   let drift_history = [];
   let drift_history_samples = 10;
   let drift_correction = 0;
-
   function calc_drift(arr) {
     // Calculate drift correction.
     let values = arr.concat(); // copy array
@@ -72,16 +71,17 @@
   }
   let normalMusic = {};
   let breakMusic = {};
-  normalMusic.play = async () =>
-    messanger(
-      await browser.runtime.sendMessage({ GetID: "normalMusic" }),
-      "play"
-    );
-  normalMusic.pause = async () =>
-    messanger(
-      await browser.runtime.sendMessage({ GetID: "normalMusic" }),
-      "pause"
-    );
+  normalMusic.play = async () => mediaUtil.play();
+
+    // messanger(
+    //   await browser.runtime.sendMessage({ GetID: "normalMusic" }),
+    //   "play"
+    // );
+  normalMusic.pause = async () => mediaUtil.pause();
+    // messanger(
+    //   await browser.runtime.sendMessage({ GetID: "normalMusic" }),
+    //   "pause"
+    // );
   breakMusic.play = async () =>
     messanger(
       await browser.runtime.sendMessage({ GetID: "breakMusic" }),
