@@ -1,48 +1,35 @@
 function openUI() {
-	browser.tabs.create({
-		url:"/index.html"
-	});
+	Electro.run("openUI") 
 };
-async function messanger(id,message){
-    let resp = await browser.tabs.sendMessage(id,{[message]:true});
-    return resp;
- }
- let musicId,breakId;
- document.addEventListener('DOMContentLoaded', async function() {
-    tabId = await browser.tabs.query({currentWindow: true, active: true}).then((tabs) => tabs[0].id);
-    document.getElementById('openUI').addEventListener('click', function() {
-        openUI();
-    });
-    if (!await browser.tabs.sendMessage(tabId,{"exists":true}).catch(()=> false)) {
-        document.getElementById('MusicPick').innerText = "Not YouTube, can't pick";
-        document.getElementById('BreakPick').innerText = "Not YouTube, can't pick";
-        return;
-    }
- 	musicId = await browser.runtime.sendMessage({"GetID":"normalMusic"});
-	breakId = await browser.runtime.sendMessage({"GetID":"breakMusic"});
-    document.getElementById('MusicPick').innerText = (musicId<0) ? "Pick tab?" : ((musicId===tabId) ? "This Tab!" : musicId);
-    document.getElementById('BreakPick').innerText = (breakId<0) ? "Pick tab?" : ((breakId===tabId) ? "This Tab!" : breakId);
-    
-    document.getElementById('MusicPick').addEventListener('click', async function() {
-        await browser.tabs.query({currentWindow: true, active: true})
-        .then((tabs) => musicId = tabs[0].id);
-        await messanger(musicId,"setup");
-        if(breakId!=musicId){
-            browser.runtime.sendMessage({"SetID":{name:"normalMusic",value:musicId}});
-            document.getElementById('MusicPick').innerText = await browser.runtime.sendMessage({"GetID":"normalMusic"});
-        }
-    });
-    document.getElementById('BreakPick').addEventListener('click', async function() {
-        await browser.tabs.query({currentWindow: true, active: true})
-        .then((tabs) => breakId = tabs[0].id);
-        await messanger(breakId,"setup");
-        if(breakId!=musicId){
-            browser.runtime.sendMessage({"SetID":{name:"breakMusic",value:breakId}});
-            document.getElementById('BreakPick').innerText = await browser.runtime.sendMessage({"GetID":"breakMusic"});
-        }
-    });
+async function regenList(){
+    const arr = await Electro.run("reloadSessions");
+    return arr.map((v,i) => `<option value="${i}">${v}</option>`).reduce((ll,l)=>ll+l);
 }
-)
+let docstring, musicId, breakId;
+const regen = async function () {
+    musicId = await Electro.run("getNormal");
+    breakId = await Electro.run("getBreak");
+    docstring = await regenList();
+    document.getElementById('music').innerHTML = docstring;
+    document.getElementById('break').innerHTML = docstring;
+    document.getElementById('music').value = musicId;
+    document.getElementById('break').value = breakId;
+ };
+ document.addEventListener('DOMContentLoaded', async function() {
+    document.getElementById('openUI').addEventListener('click', openUI);
+    await regen();
+    document.getElementById('reload').addEventListener('click', regen);
+    document.getElementById('music').addEventListener('change', async function() {
+        const l = document.getElementById('music').value;
+            if (l) Electro.run("setNormal",parseInt(l));
+        }
+    );
+    document.getElementById('break').addEventListener('change', async function() {
+        const l = document.getElementById('break').value;
+            if (l) Electro.run("setBreak",parseInt(l));
+        }
+    );
+ })
 
 
 

@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<script type="application/javascript" src="browser-polyfill.min.js"></script>
 </head>
-<p>Music Playlist Tab:</p>
-<button id="MusicPick">Pick This?</button>
-<p>Break Playlist Tab:</p>
-<button id="BreakPick">Pick This?</button>
+
+
+<label for="music">Choose A Media Source for Music:</label>
+
+<select id="music">
+</select>
+
+<label for="break">Choose A Media Source for Break:</label>
+
+<select id="break">
+</select>
+
 <script src="popup.js"></script>
 <br/>
 <p class="button" id="openUI">Open Musical Pomodoro</p>
+<button id="reload">Reload</button>
 <style>
 .button {
   background-color: crimson;

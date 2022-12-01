@@ -12,6 +12,7 @@
     "start": "electron ."
   },
   "devDependencies": {
+    "@electron/rebuild": "^3.2.10",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "electron": "^21.3.0",
@@ -26,6 +27,8 @@
   "author": "Tinytinfoil",
   "license": "MIT",
   "dependencies": {
+    "@nodert-win10-21h1/windows.media.control": "^0.1.6",
+    "node-gyp": "^9.3.0",
     "node-powershell": "^5.0.1",
     "prettier-plugin-svelte": "^2.2.0",
     "sirv-cli": "^1.0.0"

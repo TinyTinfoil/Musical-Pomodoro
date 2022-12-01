@@ -66,32 +66,14 @@
     hour = 0;
   }
   let plist = false;
-  async function messanger(id, message) {
-    return await browser.tabs.sendMessage(id, { [message]: true });
-  }
+
   let normalMusic = {};
   let breakMusic = {};
-  normalMusic.play = async () => mediaUtil.play();
 
-    // messanger(
-    //   await browser.runtime.sendMessage({ GetID: "normalMusic" }),
-    //   "play"
-    // );
-  normalMusic.pause = async () => mediaUtil.pause();
-    // messanger(
-    //   await browser.runtime.sendMessage({ GetID: "normalMusic" }),
-    //   "pause"
-    // );
-  breakMusic.play = async () =>
-    messanger(
-      await browser.runtime.sendMessage({ GetID: "breakMusic" }),
-      "play"
-    );
-  breakMusic.pause = async () =>
-    messanger(
-      await browser.runtime.sendMessage({ GetID: "breakMusic" }),
-      "pause"
-    );
+  normalMusic.play = async () => Electro.run('playNormal');
+  normalMusic.pause = async () => Electro.run('pauseNormal');
+  breakMusic.play = async () => Electro.run('playBreak');
+  breakMusic.pause = async () => Electro.run('pauseBreak');
 
   if (localStorage.getItem("userList") != null)
     Object.assign($userList, JSON.parse(localStorage.getItem("userList")));
@@ -117,6 +99,8 @@
       if ($userList.length !== 0) plist = !plist;
     }}>Make into Playlist : {plist}</button
   >
+  <!-- svelte-ignore missing-declaration -->
+  <button on:click={() => Electro.run('openPopup')}>Open Music Selector</button>
   <button on:click={nuke}>Nuke Task List (removes cache)</button>
   <button
     on:click={function () {
