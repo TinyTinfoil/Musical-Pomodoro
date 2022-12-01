@@ -31,7 +31,7 @@
       ><img src="images/edit.svg" alt="Edit Item" /></button
     ></td
   >
-  <td><button><img src="images/trash-alt.svg" alt="Remove Item" on:click={remove}/></button></td>
+  <td><button on:click={remove}><img src="images/trash-alt.svg" alt="Remove Item"/></button></td>
 </tr>
 
 <style>
