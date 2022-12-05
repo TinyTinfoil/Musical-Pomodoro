@@ -164,7 +164,7 @@
     margin: 0% 1em;
   }
   :global(body){
-    background: linear-gradient(crimson,white);
+    background: fixed linear-gradient(crimson,white);
   }
   :global(button){
   background-color:slategray;
