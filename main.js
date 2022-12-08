@@ -1,37 +1,58 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
+let winMain, winPop;
 const createWindow = () => {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        icon: 'favicon.png',
-        autoHideMenuBar: true,
-        tranparent: true,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
+    if (winMain?.isVisible()) winMain.show()
+    else {
+        winMain = new BrowserWindow({
+            width: 800,
+            height: 600,
+            icon: 'favicon.png',
+            autoHideMenuBar: true,
+            tranparent: true,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js')
+            }
+        })
+        winMain.loadFile('public/index.html')
+        winMain.on('closed', function () {
 
-    win.loadFile('public/index.html')
+            winMain = null
+            winPop=null;
+          })
+    }
 }
 
-const createPopup = () => {
-    const win = new BrowserWindow({
-        width: 300,
-        height: 200,
-        icon: 'favicon.png',
-        autoHideMenuBar: true,
-        tranparent: true,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
 
-    win.loadFile('public/popup.html')
+const createPopup = () => {
+    if (winPop?.isVisible()) winPop.show()
+    else {
+        winPop = new BrowserWindow({
+            width: 300,
+            height: 200,
+            icon: 'favicon.png',
+            autoHideMenuBar: true,
+            tranparent: true,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js')
+            }
+        })
+        winPop.loadFile('public/popup.html')
+        winPop.on('close', () => {
+            winPop = null;
+          });
+        
+            // set to null
+          winPop.on('closed', () => {
+            winPop = null;
+          });
+    }
 }
 
 app.whenReady().then(() => {
     createWindow()
+    
+      
 })
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
@@ -50,6 +71,10 @@ app.setUserTasks([
     description: 'Create a new window'
   }
 ])
+
+
+  
+
 
 const {GlobalSystemMediaTransportControlsSessionManager} = require('@nodert-win10-21h1/windows.media.control');
 
