@@ -1,13 +1,13 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray} = require('electron')
 const path = require('path')
 let winMain, winPop;
 const createWindow = () => {
     if (winMain?.isVisible()) winMain.show()
     else {
         winMain = new BrowserWindow({
-            width: 800,
+            width: 1000,
             height: 600,
-            icon: 'favicon.png',
+            icon: 'favicon.ico',
             autoHideMenuBar: true,
             tranparent: true,
             webPreferences: {
@@ -28,9 +28,9 @@ const createPopup = () => {
     if (winPop?.isVisible()) winPop.show()
     else {
         winPop = new BrowserWindow({
-            width: 300,
-            height: 200,
-            icon: 'favicon.png',
+            width: 280,
+            height: 260,
+            icon: 'favicon.ico',
             autoHideMenuBar: true,
             tranparent: true,
             webPreferences: {
@@ -51,7 +51,7 @@ const createPopup = () => {
 
 app.whenReady().then(() => {
     createWindow()
-    
+    tray = new Tray('favicon.ico')
       
 })
 app.on('window-all-closed', () => {

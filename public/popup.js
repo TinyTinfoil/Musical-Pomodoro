@@ -2,6 +2,7 @@ function openUI() {
 	Electro.run("openUI"); 
 }async function regenList(){
     const arr = await Electro.run("reloadSessions");
+    if (arr.length == 0) return "<option value='-1'>--No music detected--</option>";
     return arr.map((v,i) => `<option value="${i}">${v}</option>`).reduce((ll,l)=>ll+l);
 }
 let docstring, musicId, breakId;

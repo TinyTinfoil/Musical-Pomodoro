@@ -9,7 +9,7 @@
 
 <select id="music">
 </select>
-
+<br>
 <label for="break">Choose A Media Source for Break:</label>
 
 <select id="break">
@@ -18,7 +18,8 @@
 <script src="popup.js"></script>
 <br/>
 <p class="button" id="openUI">Open Musical Pomodoro</p>
-<button id="reload">Reload</button>
+<br>
+<button class="button" id="reload">Reload</button>
 <style>
 .button {
   background-color: crimson;
@@ -32,6 +33,20 @@
 }
 p {
 	font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body{
+  background-size: cover;
+  background-image: url("bg.png");
+  background-color: black;
+}
+label{
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 </style>
 </html>

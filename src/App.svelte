@@ -97,7 +97,7 @@
   <button
     on:click={function () {
       if ($userList.length !== 0) plist = !plist;
-    }}>Make into Playlist : {plist}</button
+    }}> {!plist? "Make into Playlist" : "Edit playlist"}</button
   >
   <!-- svelte-ignore missing-declaration -->
   <button on:click={() => Electro.run('openPopup')}>Open Music Selector</button>
