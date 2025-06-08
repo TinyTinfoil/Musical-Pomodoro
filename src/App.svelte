@@ -183,8 +183,7 @@
     background: fixed linear-gradient(crimson,white);
   }
   :global(button){
-  background-color:slategray;
-  border: none;
+  border-width: 2px;
   padding: 15px 32px;
   margin: 1em;
   text-align: center;

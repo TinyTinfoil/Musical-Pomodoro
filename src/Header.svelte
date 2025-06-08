@@ -23,7 +23,7 @@
 
 <h1>
   {hour % 12 || 12}:{min < 10 ? "0" + min : min}
-  {hour > 12 ? "PM" : "AM"}
+  {hour >= 12 ? "PM" : "AM"}
   <br />
   <sub>{desc}</sub>
 </h1>

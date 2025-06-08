@@ -40,6 +40,7 @@
   }
   img {
     width: 20px;
+    height: 22.85px;
   }
   .active {
     background-color: rgb(39, 99, 39);
